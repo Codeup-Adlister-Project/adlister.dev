@@ -7,7 +7,7 @@ with the new input-->
 		<input type='text' name='title' value='' placeholder='Title'></input>
 	</p>
 	<p>
-		<input type='text' name='description' value='' placeholder='Description'></input>
+		<textarea type='text' name='description' value='' placeholder='Description' rows='10' cols='75'></textarea>
 	</p>
 	<p>
 		<input type='text' name='price' value='' placeholder='Price'></input>
@@ -17,7 +17,7 @@ with the new input-->
 	</p>
 	<p>
 		<input type='text' name='contactEmail' value='' placeholder='Your email address'></input>
-		<span><input type='radio' name='radioButton' value='email is preferred'>Email is preferred</input></span>
+		<span><input type='radio' name='radioButton' value='email is preferred' checked>Email is preferred</input></span>
 	</p>
 	<p>
 		<input type='text' name='contactPhone' value='' placeholder='Your phone number'></input>
@@ -25,4 +25,9 @@ with the new input-->
 	</p>
 		<input type='submit' name='submit' value='Submit'></input>
 	
+
+
+<!-------- Need to add an image-upload/delete feature here ---------->
+
+
 </form>
