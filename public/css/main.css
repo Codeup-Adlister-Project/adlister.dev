@@ -1,103 +1,76 @@
-h1, h2, h3, h4, h5, h6, p, a {
+body, h1, h2, h3, h4, h5, h6, p, a {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
 .contain-to-grid {
-    background: #39CCCC;
+    background: #001f3f;
 }
 
 .top-bar {
-    background: #39CCCC;
+    background: #001f3f;
 }
 
 .top-bar-section ul li > a {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
-    color: #222;
-    letter-spacing: 0.05rem;
+    color: #7FDBFF;
+    letter-spacing: 0.0425rem;
 }
 
 .top-bar .name h1 a {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.125rem;
-    color: #222;
+    font-family: 'Montserrat', Verdana, sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+    letter-spacing: 0.0875rem;
+    color: #7FDBFF;
+}
+    .top-bar .name h1 a:hover {
+        color: #82BAED;
+    }
+
+.logo-liste {
+    font-family: 'Montserrat Alternates', 'Montserrat', Verdana, sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
 }
 
 .top-bar .toggle-topbar.menu-icon a {
-    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.125rem;
-    color: #222;
+    letter-spacing: 0.0875rem;
+    color: #7FDBFF;
 }
-
-.top-bar-section ul li {
-    background: #39CCCC; }
+    .top-bar .toggle-topbar.menu-icon a:hover {
+        color: #82BAED;
+    }
 
 .top-bar-section li.hover > a:not(.button) {
-      background-color: #221c35;
-      background: #39CCCC;
-      color: #222; }
+    background-color: #221c35;
+    background: #001f3f;
+    color: #7FDBFF; 
+}
     .top-bar-section li:not(.has-form) a:not(.button) {
-      padding: 0 0.9375rem;
-      line-height: 2.8125rem;
-      background: #39CCCC; }
-      .top-bar-section li:not(.has-form) a:not(.button):hover {
-        background-color: #221c35;
-        background: #61D6D6; }
-    .top-bar-section li.active:not(.has-form) a:not(.button) {
-      padding: 0 0.9375rem;
-      line-height: 2.8125rem;
-      color: #222;
-      background: #61D6D6; }
-      .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-        background: #61D6D6;
-        color: #222; }
+        background: #001f3f; 
+    }
+        .top-bar-section li:not(.has-form) a:not(.button):hover {
+            background-color: #221c35;
+            background: #00162D; 
+            color: #82BAED;
+        }
+            .top-bar-section li.active:not(.has-form) a:not(.button) {
+                color: #7FDBFF;
+                background: #1A3552; 
+            }
+                .top-bar-section li.active:not(.has-form) a:not(.button):hover {
+                    background: #1A3552;
+                    color: #82BAED; 
+                }
 
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
     background-color: #221c35;
-    color: #222;
-    }
+    color: #7FDBFF;
+}
 
-
-.top-bar .toggle-topbar a {
-      color: #222;
-      text-transform: uppercase;
-      font-size: 0.8125rem;
-      font-weight: bold;
-      position: relative;
-      display: block;
-      padding: 0 0.9375rem;
-      height: 2.8125rem;
-      line-height: 2.8125rem; }
-    .top-bar .toggle-topbar.menu-icon {
-      top: 50%;
-      margin-top: -16px; }
-      .top-bar .toggle-topbar.menu-icon a {
-        height: 34px;
-        line-height: 33px;
-        padding: 0 2.5rem 0 0.9375rem;
-        color: #222;
-        position: relative; }
-        .top-bar .toggle-topbar.menu-icon a span::after {
-          content: "";
-          position: absolute;
-          display: block;
-          height: 0;
-          top: 50%;
-          margin-top: -8px;
-          right: 0.9375rem;
-          width: 16px; }
-        .top-bar .toggle-topbar.menu-icon a span:hover:after {
-          box-shadow: 0 0 0 1px "", 0 7px 0 1px "", 0 14px 0 1px ""; }
-  .top-bar.expanded {
-    height: auto;
-    background: transparent; }
-    .top-bar.expanded .title-area {
-      background: #39CCCC; }
-    .top-bar.expanded .toggle-topbar a {
-      color: #222; }
-      .top-bar.expanded .toggle-topbar a span::after {
-        box-shadow: 0 0 0 1px #888888, 0 7px 0 1px #888888, 0 14px 0 1px #888888; }
-
+.top-bar.expanded .title-area {
+    background: #001f3f; 
+}
         
