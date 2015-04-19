@@ -1,4 +1,5 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
     // Resume current session
     if (!isset($_SESSION)) { 
         session_start(); 
@@ -24,6 +25,7 @@
         <div class="medium-12 columns">
             <h1 class="hero">Unlimited free ad listing. <br class="hide-for-small">Local and world-wide.</h1>
             <h3 class="call">View our featured ads&nbsp;below.</h3>
+            <?php echo "<h1>".Auth::check()."</h1>";?>
         </div>
     </div>
 

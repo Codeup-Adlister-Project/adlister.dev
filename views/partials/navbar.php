@@ -1,4 +1,5 @@
-    <div class="fixed">
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');?>
+<div class="fixed">
         <nav class="top-bar" data-topbar data-options="scrolltop:false">
             <ul class="title-area">
                 <li class="name">
@@ -19,7 +20,7 @@
                     <li class="divider show-for-small-only"></li>
                     
                     <!-- If user is already logged in, show 'logout' button -->
-                    <?php if(isset($_SESSION['LOGGED_IN_USER'])) { ?>
+                    <?php if(Auth::check()) { ?>
                         <li class=""><a href="users.show.php">My Account</a><li>
                         <li class="divider"></li>
                         <li class=""><a href="auth.logout.php">Logout</a></li>
