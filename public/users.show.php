@@ -1,8 +1,50 @@
 <!-- Displays a logged in user's profile -->
 
-<h1>You are logged in!</h1>
-<h3>Look at your beautiful profile page! @_@</h3>
+<?php
+    require_once '../utils/Auth.php';
 
-<form action="auth.logout.php">
-	<input type='submit' value="Logout">
-</form>
+    // Resume current session
+    if (!isset($_SESSION)) { 
+        session_start();
+        $user = Auth::user(); 
+    }
+?>
+
+<!doctype html>
+<html lang="en-US" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adlister | Profile</title>
+
+<?php require_once '../views/partials/header.php'; ?>
+</head>
+<body>
+
+<?php require_once '../views/partials/navbar.php'; ?>
+
+	<h1>You are logged in <?= $user; ?>!</h1>
+	<h3>Look at your beautiful profile page! @_@</h3>
+	<ul>
+		<li>Username: <?= $user; ?></li>
+		<li><a href="users.edit.php">Change Password</a></li>
+		<li>Email: <a href="users.edit.php">Change Email</a></li>
+	</ul>
+
+	<form action="users.edit.php">
+		<input type='submit' value="Edit Profile">
+	</form>
+    <br>
+    <hr>
+    <h3>Your Ads:</h3>
+<!-- Add a section that shows the user's posted ads -->
+
+
+<?php require_once '../views/partials/footer.php'; ?>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>

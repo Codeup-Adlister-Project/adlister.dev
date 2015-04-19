@@ -8,9 +8,9 @@
 	// Start a session for the page
 	session_start();
 
-	// If user is already logged in, redirect to authorization page and don't run rest of PHP
+	// If user is already logged in, redirect to profile page and don't run rest of PHP
 	if(Auth::check()){
-		header("Location: users.show.php");		// header() is a redirect function
+		header("Location: users.show.php");
 		exit();
 	}
 	
