@@ -25,7 +25,6 @@
         <div class="medium-12 columns">
             <h1 class="hero">Unlimited free ad listing. <br class="hide-for-small">Local and world-wide.</h1>
             <h3 class="call">View our featured ads&nbsp;below.</h3>
-            <?php echo "<h1>".Auth::check()."</h1>";?>
         </div>
     </div>
 
@@ -40,8 +39,8 @@
 <?php require_once 'ads.index.php'; ?>
 
 <?php require_once '../views/partials/footer.php'; ?>
-    <script src="/js/vendor/jquery.js"></script>
-    <script src="/js/foundation.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
     <script>
         $(document).foundation();
     </script>
