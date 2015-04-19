@@ -1,4 +1,3 @@
-    
     <section id="featured">
         
         <div class="row">
