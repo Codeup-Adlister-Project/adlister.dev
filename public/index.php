@@ -8,7 +8,25 @@
 <?php require_once '../views/partials/header.php'; ?>
 </head>
 <body>
+
 <?php require_once '../views/partials/navbar.php'; ?>
+
+<section id="homepage-hero">
+
+    <div class="row">
+        <div class="medium-12 columns">
+            <h1 class="hero">Unlimited free ad listing. <br class="hide-for-small">Local and world-wide.</h1>
+            <h3 class="call">View our featured ads&nbsp;below.</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns text-center">
+            <p class="arrow"><i class="fa fa-angle-down"></i></p>
+        </div>
+    </div>
+
+</section>
 
 <?php require_once 'ads.index.php'; ?>
 
