@@ -11,15 +11,23 @@
                 <!-- Right Nav Section -->
                 <ul class="right">
                     <li class="divider show-for-small-only"></li>
-                    <li class="active"><a href="#featured">Featured ads</a></li>
+                    <li class="active"><a href="index.php#featured">Featured ads</a></li>
                     <li class="divider show-for-small-only"></li>
                     <li class=""><a href="#">All ads</a></li>
                     <li class="divider show-for-small-only"></li>
                     <li class=""><a href="#">Categories</a></li>
                     <li class="divider show-for-small-only"></li>
-                    <li class=""><a href="#">Sign up</a></li>
-                    <li class="divider"></li>
-                    <li class=""><a href="#">Login</a></li>
+                    
+                    <!-- If user is already logged in, show 'logout' button -->
+                    <?php if(isset($_SESSION['LOGGED_IN_USER'])) { ?>
+                        <li class=""><a href="users.show.php">My Account</a><li>
+                        <li class="divider"></li>
+                        <li class=""><a href="auth.logout.php">Logout</a></li>
+                    <?php } else { ?>
+                        <li class=""><a href="users.create.php">Sign up</a></li>
+                        <li class="divider"></li>
+                        <li class=""><a href="auth.login.php">Login</a></li>
+                    <?php } ?>
                 </ul>
             </section>
         </nav>
