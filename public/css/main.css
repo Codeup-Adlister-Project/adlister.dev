@@ -164,9 +164,25 @@ h5.featured-ads {
     content: ": ";
 }
 
+.ad-disabled {
+    border-top: 0.625em solid #B6B9C4;
+    height: 100%;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none;
+    position: relative;
+}
+
+.panel-disabled {
+    background: transparent;
+    min-height: 10rem;
+    position: relative;
+}
+
+
 .view-ad {
     text-align: right;
-    border-top: 1px solid #DDDDDD;
+    border-top: 1px solid #D8D8D8;
     padding-top: 1.25rem;
 }
 
@@ -177,6 +193,20 @@ h5.featured-ads {
     letter-spacing: 0.0375rem;
 }
 
+.panel-disabled .view-ad {
+    border-top: none;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+
+.panel-disabled .view-ad a {
+    color: #B6B9C4;
+}
+
+.panel-disabled .view-ad a:hover {
+    color: #92939C;
+}
 
 .contain-to-grid {
     background: #344B65;
