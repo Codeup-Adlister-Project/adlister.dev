@@ -1,13 +1,10 @@
 <!-- Displays a logged in user's profile -->
 
 <?php
-    require_once '../utils/Auth.php';
+    // Require Classes and resume current session
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-    // Resume current session
-    if (!isset($_SESSION)) { 
-        session_start();
-        $user = Auth::user(); 
-    }
+    $user = Auth::user(); 
 ?>
 
 <!doctype html>

@@ -1,10 +1,8 @@
 <!-- Displays a form containing user data from database, and updates the database with changed input -->
 
 <?php
-  	// Resume current session 
-    if (!isset($_SESSION)) { 
-        session_start(); 
-    }
+  	// Require Classes and resume current session
+	require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 ?>
 
 <!doctype html>

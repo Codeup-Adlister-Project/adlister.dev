@@ -1,9 +1,4 @@
-<?php
-    // Resume current session
-    if (!isset($_SESSION)) { 
-        session_start(); 
-    }
-?>
+<?php require_once '../bootstrap.php'; ?>
 
 <!doctype html>
 <html lang="en-US" class="no-js">

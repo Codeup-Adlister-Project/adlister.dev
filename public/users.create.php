@@ -1,13 +1,9 @@
 <!-- Displays a form to create a user in the database -->
 
 <?php
-	// Required Classes
-	require_once '../utils/Auth.php';
-
-	// Resume current session
-	if (!isset($_SESSION)) { 
-        session_start();
-    }
+	// Require Classes and start a session for the page
+	require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
+	
 	// If user is already logged in, redirect to profile page and don't run rest of PHP
 	if(Auth::check()){
 		header("Location: users.show.php");
