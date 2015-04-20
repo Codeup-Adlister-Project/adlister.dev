@@ -63,6 +63,9 @@ h3 a:active {
     background-color: #1599C6;
     color: #E4F3FC;
     letter-spacing: 0.0625rem;
+    -webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
+    -moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
 }
 
 .button:hover,
