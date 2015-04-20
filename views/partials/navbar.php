@@ -1,3 +1,5 @@
+<div id="wrap" class="clearfix"> <!-- Start wrap -->
+
     <div class="fixed">
         <nav class="top-bar" data-topbar data-options="scrolltop:false">
             <ul class="title-area">
@@ -33,3 +35,4 @@
         </nav>
     </div>
 
+    <div id="main"> <!-- Start main section -->
