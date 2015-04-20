@@ -13,7 +13,7 @@
                     <li class="divider show-for-small-only"></li>
                     <li class="active"><a href="index.php#featured">Featured ads</a></li>
                     <li class="divider show-for-small-only"></li>
-                    <li class=""><a href="#">All ads</a></li>
+                    <li class=""><a href="ads.index.php">All ads</a></li>
                     <li class="divider show-for-small-only"></li>
                     <li class=""><a href="#">Categories</a></li>
                     <li class="divider show-for-small-only"></li>
