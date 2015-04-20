@@ -42,7 +42,7 @@
 
 </section>
 
-<?php require_once 'ads.index.php'; ?>
+<?php require_once 'featured.index.php'; ?>
 
 <?php require_once '../views/partials/footer.php'; ?>
     <script src="/js/vendor/jquery.js"></script>
