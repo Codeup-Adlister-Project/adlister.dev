@@ -27,10 +27,14 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="large-4 medium-5 columns">
-            <a class="large button round hide-for-small" href="auth.login.php">Login to start posting</a>
-            <a class="small button round show-for-small" href="auth.login.php">Login to start posting</a>
+    <div class="row main-button">
+        <div class="large-3 medium-4 columns">
+            <a class="small button hide-for-small" href="auth.login.php">Login</a>
+            <a class="small button show-for-small" href="auth.login.php">Login</a>
+        </div>
+        <div class="large-3 medium-4 columns end">
+            <a class="small button secondary hide-for-small" href="users.create.php">Sign up</a>
+            <a class="small button secondary show-for-small" href="users.create.php">Sign up</a>
         </div>
     </div>
 
@@ -45,8 +49,8 @@
 <?php require_once 'featured.index.php'; ?>
 
 <?php require_once '../views/partials/footer.php'; ?>
-    <script src="/js/vendor/jquery.js"></script>
-    <script src="/js/foundation.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
     <script>
         $(document).foundation();
     </script>

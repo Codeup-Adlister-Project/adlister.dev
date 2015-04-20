@@ -47,6 +47,37 @@ h3 a:active {
         } 
     }
 
+.button {
+    font-family: 'Montserrat', Verdana, sans-serif;
+    font-weight: 400;
+    background-color: #1599C6;
+    color: #E4F3FC;
+    letter-spacing: 0.0625rem;
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+    background-color: #117B9E;
+    color: #E4F3FC;
+}
+
+.main-button {
+    margin-top: 1.25rem;
+}
+
+.button.secondary {
+    background-color: #68778B;
+    color: #C5D8E5;
+}
+
+.button.secondary:hover,
+.button.secondary:active,
+.button.secondary:focus {
+    background-color: #34637F;
+    color: #C5D8E5;
+}
+
 #homepage-hero {
     background: url(../img/hero-2000-darkblue.jpg) #001429;
     background-repeat: no-repeat;
