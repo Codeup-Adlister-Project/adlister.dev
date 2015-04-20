@@ -1,4 +1,16 @@
 <!-- Displays a form for creating a new add in the database -->
+<!doctype html>
+<html lang="en-US" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adlister | Create Ad</title>
+
+<?php require_once '../views/partials/header.php'; ?>
+</head>
+<body>
+
+<?php require_once '../views/partials/navbar.php'; ?>
 
 <h2>Create New Ad</h2>
 <form method="POST" action=''>
@@ -30,3 +42,11 @@
 	
 </form>
 
+<?php require_once '../views/partials/footer.php'; ?>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>

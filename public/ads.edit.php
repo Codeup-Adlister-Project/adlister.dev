@@ -1,5 +1,17 @@
 <!-- A form that populates the selected ad's content for editting, and then updates the ad in the database 
 with the new input-->
+<!doctype html>
+<html lang="en-US" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adlister | Edit Ad</title>
+
+<?php require_once '../views/partials/header.php'; ?>
+</head>
+<body>
+
+<?php require_once '../views/partials/navbar.php'; ?>
 
 <h2>Edit Ad</h2>
 <form method="POST" action=''>
@@ -31,3 +43,12 @@ with the new input-->
 
 
 </form>
+
+<?php require_once '../views/partials/footer.php'; ?>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
