@@ -10,8 +10,8 @@
             <div class="large-4 medium-6 columns">       
                 <div class="ad">
                     <div class="panel">
-                        <h3>2005 Chrysler Sebring</h3>
-                        <img src="http://lorempixel.com/600/400/transport/">
+                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
+                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
                         <p>Description: Good condition, minor body work, no mechanical problems.</p>
                         <p>Price: $2,500</p>
                         <p>Contact Jamie if interested:
@@ -26,8 +26,8 @@
             <div class="large-4 medium-6 columns">    
                 <div class="ad">
                     <div class="panel">
-                        <h3>2005 Chrysler Sebring</h3>
-                        <img src="http://lorempixel.com/600/400/transport/">
+                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
+                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
                         <p>Description: Good condition, minor body work, no mechanical problems.</p>
                         <p>Price: $2,500</p>
                         <p>Contact Jamie if interested:
@@ -42,8 +42,8 @@
             <div class="large-4 medium-6 columns">
                 <div class="ad">
                     <div class="panel">
-                        <h3>2005 Chrysler Sebring</h3>
-                        <img src="http://lorempixel.com/600/400/transport/">
+                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
+                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
                         <p>Description: Good condition, minor body work, no mechanical problems.</p>
                         <p>Price: $2,500</p>
                         <p>Contact Jamie if interested:
@@ -59,8 +59,8 @@
             <div class="large-4 medium-6 columns">
                 <div class="ad">
                     <div class="panel">
-                        <h3>2005 Chrysler Sebring</h3>
-                        <img src="http://lorempixel.com/600/400/transport/">
+                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
+                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
                         <p>Description: Good condition, minor body work, no mechanical problems.</p>
                         <p>Price: $2,500</p>
                         <p>Contact Jamie if interested:
@@ -75,8 +75,8 @@
             <div class="large-4 medium-6 columns end">
                 <div class="ad">
                     <div class="panel">
-                        <h3>2005 Chrysler Sebring</h3>
-                        <img src="http://lorempixel.com/600/400/transport/">
+                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
+                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
                         <p>Description: Good condition, minor body work, no mechanical problems.</p>
                         <p>Price: $2,500</p>
                         <p>Contact Jamie if interested:
