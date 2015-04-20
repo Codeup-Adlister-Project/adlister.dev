@@ -23,13 +23,13 @@
     </div>
 
     <div class="row main-button">
-        <div class="large-3 medium-4 columns">
-            <a class="small button hide-for-small" href="auth.login.php">Login</a>
-            <a class="small button show-for-small" href="auth.login.php">Login</a>
+        <div class="large-3 medium-3 columns">
+            <a class="small button radius hide-for-small" href="auth.login.php">Login</a>
+            <a class="small button radius show-for-small" href="auth.login.php">Login</a>
         </div>
-        <div class="large-3 medium-4 columns end">
-            <a class="small button secondary hide-for-small" href="users.create.php">Sign up</a>
-            <a class="small button secondary show-for-small" href="users.create.php">Sign up</a>
+        <div class="large-3 medium-3 columns end">
+            <a class="small button radius secondary hide-for-small" href="users.create.php">Sign up</a>
+            <a class="small button radius secondary show-for-small" href="users.create.php">Sign up</a>
         </div>
     </div>
 
