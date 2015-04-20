@@ -28,6 +28,13 @@
     </div>
 
     <div class="row">
+        <div class="large-4 medium-5 columns">
+            <a class="large button round hide-for-small" href="auth.login.php">Login to start posting</a>
+            <a class="small button round show-for-small" href="auth.login.php">Login to start posting</a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="medium-12 columns text-center">
             <p class="arrow"><i class="fa fa-angle-down"></i></p>
         </div>
