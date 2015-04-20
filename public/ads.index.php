@@ -1,3 +1,20 @@
+<?php 
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../models/Ad.php');
+
+    function pageController()
+    {
+        $data =['ads' => Ad::all()];
+
+        return $data;   
+
+    }
+    // extract() will turn all the associative indices in the above $data array into variables that can be called directly later.
+    // For example: $data['ads'] can now just be called by $ads
+    extract(pageController()); 
+      
+    
+?>
+
     <section id="featured">
         
         <div class="row">
@@ -7,87 +24,24 @@
         </div>   
 
         <div class="row">
-            <div class="large-4 medium-6 columns">       
-                <div class="ad">
-                    <div class="panel">
-                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
-                        <p>Description: Good condition, minor body work, no mechanical problems.</p>
-                        <p>Price: $2,500</p>
-                        <p>Contact Jamie if interested:
-                            <ul>
-                                <li>Email: email@gmail.com</li>
-                                <li>Cell: 555-555-5555</li>
-                            </ul>
-                        </p>
+            <?php foreach($ads as $ad){ ?>
+                <div class="large-4 medium-6 columns">       
+                    <div class="ad">
+                        <div class="panel">
+                            <h3><a href="ads.show.php"><?= $ad['title']; ?></a></h3>
+                            <a href="ads.show.php"><img src="<?= $ad['image_url']; ?>"></a>
+                            <p>Description: <?= $ad['description']; ?></p>
+                            <p>Price: $<?= $ad['price']; ?></p>
+                            <p>Contact <?= $ad['contact_name']; ?> if interested:
+                                <ul>
+                                    <li>Email: <?= $ad['contact_email']; ?></li>
+                                    <li>Cell: <?= $ad['contact_phone']; ?></li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="large-4 medium-6 columns">    
-                <div class="ad">
-                    <div class="panel">
-                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
-                        <p>Description: Good condition, minor body work, no mechanical problems.</p>
-                        <p>Price: $2,500</p>
-                        <p>Contact Jamie if interested:
-                            <ul>
-                                <li>Email: email@gmail.com</li>
-                                <li>Cell: 555-555-5555</li>
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="large-4 medium-6 columns">
-                <div class="ad">
-                    <div class="panel">
-                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
-                        <p>Description: Good condition, minor body work, no mechanical problems.</p>
-                        <p>Price: $2,500</p>
-                        <p>Contact Jamie if interested:
-                            <ul>
-                                <li>Email: email@gmail.com</li>
-                                <li>Cell: 555-555-5555</li>
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-4 medium-6 columns">
-                <div class="ad">
-                    <div class="panel">
-                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
-                        <p>Description: Good condition, minor body work, no mechanical problems.</p>
-                        <p>Price: $2,500</p>
-                        <p>Contact Jamie if interested:
-                            <ul>
-                                <li>Email: email@gmail.com</li>
-                                <li>Cell: 555-555-5555</li>
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="large-4 medium-6 columns end">
-                <div class="ad">
-                    <div class="panel">
-                        <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
-                        <p>Description: Good condition, minor body work, no mechanical problems.</p>
-                        <p>Price: $2,500</p>
-                        <p>Contact Jamie if interested:
-                            <ul>
-                                <li>Email: email@gmail.com</li>
-                                <li>Cell: 555-555-5555</li>
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-            </div> 
+            <?php } ?>
         </div>  
 
 
