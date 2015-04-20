@@ -1,5 +1,29 @@
 html, body {
     background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+#main {
+    padding-bottom: 6em; /* STICKY FOOTER: needs to match height of footer element*/
+}
+
+footer {
+    height: 6em; /* STICKY FOOTER: needs to match height of #main padding-bottom; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
 }
 
 body, p, a {
@@ -42,12 +66,18 @@ h3 a:active {
 .arrow {
     color: rgba(255, 255, 255, 0.3);
     font-size: 4rem;
-    margin-top: 10rem;
+    margin-top: 6rem;
 }
 
     @media screen and (max-width: 320px) {
         .arrow {
-            margin-top: 4rem;
+            display: none;
+        } 
+    }
+
+    @media screen and (max-width: 640px) {
+        p.arrow {
+            margin-top: 3rem;
         } 
     }
 
@@ -57,6 +87,9 @@ h3 a:active {
     background-color: #1599C6;
     color: #E4F3FC;
     letter-spacing: 0.0625rem;
+    -webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
+    -moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25) inset;
 }
 
 .button:hover,
@@ -115,7 +148,7 @@ h3 a:active {
     @media screen and (max-width: 320px) {
         #homepage-hero {
             height: 600px;
-            padding: 100px 5px 30px 5px; 
+            padding: 50px 5px 30px 5px; 
         } 
     }
 

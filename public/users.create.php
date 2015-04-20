@@ -16,7 +16,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adlister | Home</title>
+    <title>Adlister | Create an Account</title>
 
 <?php require_once '../views/partials/header.php'; ?>
 </head>
