@@ -1,3 +1,5 @@
+<?php require_once '../bootstrap.php'; ?>
+
 <!-- A form that populates the selected ad's content for editting, and then updates the ad in the database 
 with the new input-->
 <!doctype html>

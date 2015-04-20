@@ -1,3 +1,5 @@
+<?php require_once '../bootstrap.php'; ?>
+
 <!-- Displays a form for creating a new add in the database -->
 <!doctype html>
 <html lang="en-US" class="no-js">
