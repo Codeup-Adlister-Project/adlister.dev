@@ -1,12 +1,9 @@
 <!-- Displays a login form for the user, calls the Auth class, starts a session,and redirects to site upon success -->
 
 <?php
-	// Required Classes
-	require_once '../utils/Auth.php';
-	require_once '../utils/Input.php';
+	// Require Classes and start a session for the page
+	require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-	// Start a session for the page
-	session_start();
 
 	// If user is already logged in, redirect to profile page and don't run rest of PHP
 	if(Auth::check()){
