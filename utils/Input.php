@@ -22,7 +22,7 @@ class Input
      */
     public static function get($key, $default = NULL)
     {
-        return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default; 
+        return self::has($key) ? $_REQUEST[$key] : $default; 
     }
 
     public static function getString($key, $min = NULL, $max = NULL)
