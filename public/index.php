@@ -24,8 +24,8 @@
 
     <div class="row main-button">
         <div class="large-3 medium-3 columns">
-            <a class="small button radius hide-for-small" href="auth.login.php">Login</a>
-            <a class="small button radius show-for-small" href="auth.login.php">Login</a>
+            <a class="small button radius hide-for-small" href="#" data-reveal-id="loginModal">Log in</a>
+            <a class="small button radius show-for-small" href="#" data-reveal-id="loginModal">Log in</a>
         </div>
         <div class="large-3 medium-3 columns end">
             <a class="small button radius secondary hide-for-small" href="users.create.php">Sign up</a>
@@ -44,10 +44,6 @@
 <?php require_once 'featured.index.php'; ?>
 
 <?php require_once '../views/partials/footer.php'; ?>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-        $(document).foundation();
-    </script>
+
 </body>
 </html>

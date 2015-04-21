@@ -50,7 +50,7 @@
                                 <?php if(count($ads) == $ad['id']) { ?>
                                         <p class="view-ad"><a href="ads.index.php">Back to all ads <i class="fa fa-chevron-circle-right"></i></a></p>
                                 <?php } else { ?>
-                                        <p class="view-ad"><a href="ads.show.php?id=<?= $ad['id']+1; ?>">View next ad <i class="fa fa-chevron-circle-right"></i></a></p>
+                                        <p class="view-ad"><a href="ads.show.php?id=<?= $ad['id']-1; ?>">View next ad <i class="fa fa-chevron-circle-right"></i></a></p>
         					<?php } ?>
         				<?php } ?>
                     <?php } ?>
@@ -61,10 +61,6 @@
 </section>
 
 <?php require_once '../views/partials/footer.php'; ?>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-        $(document).foundation();
-    </script>
+
 </body>
 </html>

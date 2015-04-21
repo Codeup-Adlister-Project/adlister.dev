@@ -153,6 +153,10 @@ h3 a:active {
         } 
     }
 
+#login {
+    margin-bottom: .75em;
+}
+
 section#featured,
 section#all-ads,
 section#show-ad {
@@ -309,6 +313,10 @@ h5.featured-ads {
 
 .contain-to-grid {
     background: #344B65;
+}
+
+.reveal-modal {
+    background-color: #f8f8f8;
 }
 
 .top-bar {

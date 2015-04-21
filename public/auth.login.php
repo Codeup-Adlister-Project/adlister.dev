@@ -14,7 +14,7 @@
 	// If user is not logged in, ask for credentials
 	$username = Input::has('username') ? Input::get('username') : '';
 	$password = Input::has('password') ? Input::get('password') : '';
-	$message = '';
+	$errorMessage = '';
 
 	if($_POST) {
 
@@ -25,30 +25,20 @@
 			header("Location: users.show.php");
 			exit();
 		} else {
-			$message = "Wrong username or password";
+			$errorMessage = "Wrong username or password";
 		}
 	}
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>POST,Session,Class</title>
-</head>
-<body>
-	<? if(!empty($message)): ?>
-		<h1><?= $message; ?></h1>
-	<? endif; ?>
-	<form method="POST" action="auth.login.php">
-		<p>
-			<label for="name">Username: </label>
-			<input type="text" name="username" id="name">
-		</p>
-		<p>
-			<label for="pswd">Password: </label>
-			<input type="password" name="password" id="pswd">
-		</p>
-		<button type="submit">Submit</button>
-	</form>
-</body>
-</html>
+
+<?php if(!empty($errorMessage)): ?>
+	<h1><?= $errorMessage; ?></h1>
+<?php endif; ?>
+<h2 id="login">Log in</h2>
+<form method="POST" action="#">
+	<label for="name">Username</label>
+	<input type="text" name="username" id="name" />
+	<label for="pswd">Password</label>
+	<input type="password" name="password" id="pswd" />
+	<input type="submit" class="button small radius" value="Get posting!" />
+</form>
