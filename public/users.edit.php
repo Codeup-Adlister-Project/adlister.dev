@@ -24,21 +24,21 @@
             <h2>Edit Profile</h2>
             <form method="POST" action=''>
             	<p>
-            		<input type='text' name='username' value='' placeholder='Username' required></input>
+            		<input type='text' name='username' value='' placeholder='Username' required />
             	</p>
             	<p>
-            		<input type='password' name='password' value='' placeholder='Current Password' required></input>
+            		<input type='password' name='password' value='' placeholder='Current Password' required />
             	</p>
             	<p>
-            		<input type='password' name='password' value='' placeholder='New Password' required></input>
+            		<input type='password' name='password' value='' placeholder='New Password' required />
             	</p>
             	<p>
-            		<input type='password' name='confirmPass' value='' placeholder='Confirm New Password' required></input>
+            		<input type='password' name='confirmPass' value='' placeholder='Confirm New Password' required />
             	</p>
             	<p>
-            		<input type='text' name='email' value='' placeholder='Email' required></input>
+            		<input type='text' name='email' value='' placeholder='Email' required />
             	</p>
-            		<input type='submit' name='submit' value='Submit'></input>
+            		<input type='submit' name='submit' value='Submit' />
             	
             <!-- Need to add an image-upload feature that alters profile photo here -->
 
