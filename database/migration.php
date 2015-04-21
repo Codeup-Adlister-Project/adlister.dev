@@ -1,11 +1,9 @@
 <?php
-	// Define constants to be used in the PDO call before the db_connect.php file is required
-	define ('DB_HOST', '127.0.0.1');
-	define ('DB_NAME', 'adlister_db');
-	define ('DB_USER', 'adlister_user');
-	define ('DB_PASS', 'password');
+	
+	require_once '../models/BaseModel.php';
 
-	require 'db_connect.php';
+	$migration = new BaseModel;
+	$dbc = $migration->getDbConnect();
 
 	$drop = 'DROP TABLE IF EXISTS ads';
 	$dbc->exec($drop);

@@ -28,15 +28,14 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-    <section id="featured">
-        
+    <section id="featured"> 
         <div class="row">
             <div class="small-12 columns">
                 <h5 class="featured-ads">Featured ads</h5>
             </div>
         </div>   
-
         <div class="row">
+           
             <?php foreach($ads as $ad){ ?>
                 <div class="large-4 medium-6 columns">       
                     <div class="ad">
@@ -50,8 +49,8 @@
                     </div>
                 </div>
             <?php } ?>
+        
         </div>  
-
     </section>
 
 <?php require_once '../views/partials/footer.php'; ?>
