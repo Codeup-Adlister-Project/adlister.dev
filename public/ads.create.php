@@ -20,7 +20,7 @@
 		<input type='text' name='title' value='' placeholder='Title' required></input>
 	</p>
 	<p>
-		<textarea type='text' name='description' value='' placeholder='Description' rows='10' cols='75'></textarea>
+		<textarea type='text' name='description' value='' placeholder='Description' rows='10' cols='75' maxlength="4000"></textarea>
 	</p>
 	<p>
 		<input type='text' name='price' value='' placeholder='Price' required></input>
