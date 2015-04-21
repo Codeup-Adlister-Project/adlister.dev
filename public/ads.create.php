@@ -99,7 +99,7 @@
 		// If no errors occur, go ahead and insert the form into the database
 		if (empty($errors)) {
 			$ad = new Ad;
-			$ad->user_id = 500;
+			$ad->user_id = 500;		// make this = $ad->getUserID() where it returns: SELECT user_id WHERE username = Auth::user()
 			$ad->contact_name = $newName;
 			$ad->contact_email = $newEmail;
 			$ad->contact_phone = $newPhone;
@@ -145,41 +145,64 @@
 
 <!----------------------- Form Field to Create a New Ad ---------------------->
 
-<h2>Create New Ad</h2>
-<form id="createAd" method="POST">
-	<input type='hidden' name='date' value="<?= date('l\, F jS\, Y \a\t h:i:s A'); ?>"
-	<p>
-		<input type='text' id='title' name='title' value="<?= $savedInput['title']; ?>" placeholder='Title' required />
-		<span><?= $errorMessages['title'] ?></span>
-	</p>
-	<p>
-		<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
-	</p>
-	<p>$
-		<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
-		<span><?= $errorMessages['price'] ?></span>
-	</p>
-	<p>
-		<input type='text' id='contactName' name='contactName' value="<?= $savedInput['contactName']; ?>" placeholder='Your name' required />
-		<span><?= $errorMessages['contactName'] ?></span>
-	</p>
-	<p>
-		<input type='text' id='contactEmail' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Your email address' required />
-		<span><input type='radio' name='radioButton' value='email is preferred' checked />Email is preferred</span>
-		<span><?= $errorMessages['contactEmail'] ?></span>
-	</p>
-	<p>
-		<input type='text' id='contactPhone' name='contactPhone' value="<?= $savedInput['contactPhone']; ?>" placeholder='Your phone number' />
-		<span><input type='radio' name='radioButton' value='text is preferred' />Text message is preferred</span>
-		<span><?= $errorMessages['contactPhone'] ?></span>
-	</p>
-		<input type='submit' name='submit' value='Post Ad' />
+<section class="form">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Create New Ad</h2>
+			<form id="createAd" method="POST">
+				<input type='hidden' name='date' value="<?= date('l\, F jS\, Y \a\t h:i:s A'); ?>">
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Ad information</legend>
+							<label for="title">Title</label>
+							<input type='text' id='title' name='title' value="<?= $savedInput['title']; ?>" placeholder='Title' required />
+							<?= "<span>" . $errorMessages['title'] . "</span>" ?>
+							<label for="description">Description</label>
+							<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
+							<label for="price">Price</label>
+							$<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
+							<?= "<span>" . $errorMessages['price'] . "</span>" ?>
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Your contact information</legend>		
+							<label for="contactName">Name</label>
+							<input type='text' id='contactName' name='contactName' value="<?= $savedInput['contactName']; ?>" placeholder='Your name' required />
+							<?= "<span>" . $errorMessages['contactName'] . "</span>" ?>
+							<label for="contactEmail">Email</label>
+							<input type='text' id='contactEmail' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Your email address' required />
+							<?= "<span>" . $errorMessages['contactEmail'] . "</span>" ?>
+							<label for="contactPhone">Phone number</label>
+							<input type='text' id='contactPhone' name='contactPhone' value="<?= $savedInput['contactPhone']; ?>" placeholder='Your phone number' />
+							<?= "<span>" . $errorMessages['contactPhone'] . "</span>" ?>
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Preferred contact method</legend>
+							<input type="radio" name="contactMethod" value="email-preferred" id="emailPreferred" checked /><label for="emailPreferred">Email</label>
+							<input type="radio" name="contactMethod" value="text-preferred" id="textPreferred" /><label for="textPreferred">Text</label>
+						</fieldset>
+					</div>
+				</div>
 
-
-<!-------- Need to add an image-upload feature here ---------->
-
-	
-</form>
+			<!-- Need to add an image-upload/delete feature here -->
+				
+				<div class="row">
+					<div class="large-8 columns">
+						<input type='submit' name='submit' value='Post' class="button small radius">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
 
 <?php require_once '../views/partials/footer.php'; ?>
     <script src="js/vendor/jquery.js"></script>
