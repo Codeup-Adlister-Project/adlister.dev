@@ -182,7 +182,7 @@
 	    {
 	        self::dbConnect();
 
-	        return self::$dbc->query('SELECT * FROM ' . static::$table . ';')->fetchAll(PDO::FETCH_ASSOC);
+	        return self::$dbc->query("SELECT * FROM " . static::$table . " ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 	    }
 
 	}
