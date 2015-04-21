@@ -4,7 +4,12 @@
     // Require Classes and resume current session
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-    $user = Auth::user(); 
+    if(Auth::check()){
+        $user = Auth::user(); 
+    } else {
+        header("Location: auth.login.php");
+        exit();
+    }
 ?>
 
 <!doctype html>
