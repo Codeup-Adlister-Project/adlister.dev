@@ -34,7 +34,7 @@ class Input
         }
 
         if(!is_string($key)) {
-            throw new InvalidArgumentException("$key must be a string.");
+            throw new InvalidArgumentException("Key $key must be a string.");
         }
 
         if(isset($min) && isset($max) && (!is_int($max) || !is_int($min))){
@@ -61,15 +61,15 @@ class Input
         }
 
         if(!is_string($key)) {
-            throw new InvalidArgumentException("$key must be a string.");
+            throw new InvalidArgumentException("Key $key must be a string.");
         }
 
         if(isset($min) && isset($max) && (!is_int($max) || !is_int($min))){
-            throw new InvalidArgumentException("Minimum and Maximum must be integers.");
+            throw new InvalidArgumentException("Min and Max parameters must be integers.");
         }
 
         if(!is_numeric($keyValue) || !isset($keyValue)){
-            throw new exception ("Key $key must be a number!");
+            throw new DomainException ("$key input must be a number!");
         }
 
         if(isset($min) && isset($max) && (strlen($keyValue) < $min || strlen($keyValue) > $max)){
