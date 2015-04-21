@@ -22,26 +22,21 @@ with the new input-->
 			<form method="POST" action=''>
 				<div class="row">
 					<div class="large-8 columns">
-						<label for="title">Title</label>
-						<input id="title" type="text" name="title" placeholder="User title here..." value="" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="large-8 columns">
-						<label for="description">Description</label>
-						<textarea id="description" name="description" rows="10" placeholder="User description here..."></textarea>
-					</div>
-				</div>		
-				<div class="row">
-					<div class="large-8 columns">
-						<label for="price">Price</label>
-						<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+						<fieldset>
+							<legend>Ad information</legend>
+							<label for="title">Title</label>
+							<input id="title" type="text" name="title" placeholder="User title here..." value="" />
+							<label for="description">Description</label>
+							<textarea id="description" name="description" rows="10" placeholder="User description here..."></textarea>
+							<label for="price">Price</label>
+							<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+						</fieldset>
 					</div>
 				</div>
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
-							<legend>Your Contact Information</legend>		
+							<legend>Your contact information</legend>		
 							<label for="contactName">Name</label>
 							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="" />
 							<label for="contactEmail">Email</label>

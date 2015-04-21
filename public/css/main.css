@@ -170,9 +170,21 @@ label, legend {
 }
 
 fieldset legend {
-    font-size: .875rem;
+    /*font-size: .875rem;*/
     font-weight: 400;
     background: #f8f8f8;
+}
+
+fieldset label {
+    font-size: inherit;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;   
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+fieldset textarea {
+    resize: vertical;
 }
 
 label input,
@@ -186,11 +198,18 @@ input[type="radio"] + label {
     font-weight: 400;   
     text-transform: none;
     letter-spacing: 0;    
-    color: #333;
+    color: #4E6178;
 }
 
 input[type="submit"] {
+    color: #fff;
     margin-top: 1.5rem;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+    color: #fff;
 }
 
 h5.featured-ads {
