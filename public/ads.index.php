@@ -28,10 +28,10 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-    <section id="featured"> 
+    <section id="all-ads"> 
         <div class="row">
             <div class="small-12 columns">
-                <h5 class="featured-ads">Featured ads</h5>
+                <h5 class="featured-ads">All ads</h5>
             </div>
         </div>   
         <div class="row">
@@ -54,10 +54,6 @@
     </section>
 
 <?php require_once '../views/partials/footer.php'; ?>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-        $(document).foundation();
-    </script>
+
 </body>
 </html>

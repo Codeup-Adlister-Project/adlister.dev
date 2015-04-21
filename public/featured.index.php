@@ -11,7 +11,7 @@
                 <div class="ad">
                     <div class="panel">
                         <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
+                        <a href="ads.show.php"><img src="img/myVehicle.jpg"></a>
                         <p><span class="pre">Description</span><span class="description">Good condition, minor body work, no mechanical problems.</span></p>
                         <p><span class="pre">Price</span><span class="price">$2,500</span></p>
                         <p class="view-ad"><a href="ads.show.php">View <i class="fa fa-chevron-circle-right"></i></a></p>
@@ -22,7 +22,7 @@
                 <div class="ad">
                     <div class="panel">
                         <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
+                        <a href="ads.show.php"><img src="img/myVehicle.jpg"></a>
                         <p><span class="pre">Description</span><span class="description">Good condition, minor body work, no mechanical problems.</span></p>
                         <p><span class="pre">Price</span><span class="price">$2,500</span></p>
                         <p class="view-ad"><a href="ads.show.php">View <i class="fa fa-chevron-circle-right"></i></a></p>
@@ -33,7 +33,7 @@
                 <div class="ad">
                     <div class="panel">
                         <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
+                        <a href="ads.show.php"><img src="img/myVehicle.jpg"></a>
                         <p><span class="pre">Description</span><span class="description">Good condition, minor body work, no mechanical problems.</span></p>
                         <p><span class="pre">Price</span><span class="price">$2,500</span></p>
                         <p class="view-ad"><a href="ads.show.php">View <i class="fa fa-chevron-circle-right"></i></a></p>
@@ -45,7 +45,7 @@
                 <div class="ad">
                     <div class="panel">
                         <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
+                        <a href="ads.show.php"><img src="img/myVehicle.jpg"></a>
                         <p><span class="pre">Description</span><span class="description">Good condition, minor body work, no mechanical problems.</span></p>
                         <p><span class="pre">Price</span><span class="price">$2,500</span></p>
                         <p class="view-ad"><a href="ads.show.php">View <i class="fa fa-chevron-circle-right"></i></a></p>
@@ -56,7 +56,7 @@
                 <div class="ad">
                     <div class="panel">
                         <h3><a href="ads.show.php">2005 Chrysler Sebring</a></h3>
-                        <a href="ads.show.php"><img src="http://lorempixel.com/600/400/transport/"></a>
+                        <a href="ads.show.php"><img src="img/myVehicle.jpg"></a>
                         <p><span class="pre">Description</span><span class="description">Good condition, minor body work, no mechanical problems.</span></p>
                         <p><span class="pre">Price</span><span class="price">$2,500</span></p>
                         <p class="view-ad"><a href="ads.show.php">View <i class="fa fa-chevron-circle-right"></i></a></p>

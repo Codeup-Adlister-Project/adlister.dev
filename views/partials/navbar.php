@@ -24,11 +24,11 @@
                     <?php if(Auth::check()) { ?>
                         <li class=""><a href="users.show.php">My Account</a><li>
                         <li class="divider"></li>
-                        <li class=""><a href="auth.logout.php">Logout</a></li>
+                        <li class=""><a href="auth.logout.php">Log out</a></li>
                     <?php } else { ?>
                         <li class=""><a href="users.create.php">Sign up</a></li>
                         <li class="divider"></li>
-                        <li class=""><a href="auth.login.php">Login</a></li>
+                        <li class=""><a href="#" data-reveal-id="loginModal">Log in</a></li>
                     <?php } ?>
                 </ul>
             </section>

@@ -15,5 +15,34 @@
             </div>
         </div>
     </footer>
+    
+
+    <div id="loginModal" class="reveal-modal small" data-reveal aria-labelledby="login" aria-hidden="true" role="dialog">
+
+        <?php require_once 'auth.login.php'; ?>
+
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
 
 </div> <!-- End wrap -->
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation(
+        <?php if (!empty($errorMessage)): ?>
+            {
+                reveal : {
+                    animation_speed: 0
+                }
+            }
+        <?php endif; ?>
+    );
+
+    <?php if (!empty($errorMessage)): ?>
+        $(document).ready(function(){
+            $('#loginModal').foundation('reveal', 'open')
+        });
+    <?php endif; ?>
+</script>
+
