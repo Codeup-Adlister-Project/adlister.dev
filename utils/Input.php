@@ -69,7 +69,7 @@ class Input
         }
 
         if(!is_numeric($keyValue) || !isset($keyValue)){
-            throw new DomainException ("$key input must be a number!");
+            throw new Exception ("$key input must be a number!");
         }
 
         if(isset($min) && isset($max) && (strlen($keyValue) < $min || strlen($keyValue) > $max)){
