@@ -18,29 +18,34 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-<h2>Edit Profile</h2>
-<form method="POST" action=''>
-	<p>
-		<input type='text' name='username' value='' placeholder='Username' required></input>
-	</p>
-	<p>
-		<input type='password' name='password' value='' placeholder='Current Password' required></input>
-	</p>
-	<p>
-		<input type='password' name='password' value='' placeholder='New Password' required></input>
-	</p>
-	<p>
-		<input type='password' name='confirmPass' value='' placeholder='Confirm New Password' required></input>
-	</p>
-	<p>
-		<input type='text' name='email' value='' placeholder='Email' required></input>
-	</p>
-		<input type='submit' name='submit' value='Submit'></input>
-	
+<section class="form">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2>Edit Profile</h2>
+            <form method="POST" action=''>
+            	<p>
+            		<input type='text' name='username' value='' placeholder='Username' required />
+            	</p>
+            	<p>
+            		<input type='password' name='password' value='' placeholder='Current Password' required />
+            	</p>
+            	<p>
+            		<input type='password' name='password' value='' placeholder='New Password' required />
+            	</p>
+            	<p>
+            		<input type='password' name='confirmPass' value='' placeholder='Confirm New Password' required />
+            	</p>
+            	<p>
+            		<input type='text' name='email' value='' placeholder='Email' required />
+            	</p>
+            		<input type='submit' name='submit' value='Submit' />
+            	
+            <!-- Need to add an image-upload feature that alters profile photo here -->
 
-
-<!-- Need to add an image-upload feature that alters profile photo here -->
-
+            </form>
+        </div>
+    </div>
+</section>
 
 <?php require_once '../views/partials/footer.php'; ?>
     <script src="/js/vendor/jquery.js"></script>
@@ -52,4 +57,3 @@
 </html>
 
 
-</form>

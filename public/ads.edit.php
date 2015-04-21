@@ -15,36 +15,58 @@ with the new input-->
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-<h2>Edit Ad</h2>
-<form method="POST" action=''>
-	<p>
-		<input type='text' name='title' value='' placeholder='Title'></input>
-	</p>
-	<p>
-		<textarea type='text' name='description' value='' placeholder='Description' rows='10' cols='75'></textarea>
-	</p>
-	<p>
-		<input type='text' name='price' value='' placeholder='Price'></input>
-	</p>
-	<p>
-		<input type='text' name='contactName' value='' placeholder='Your name'></input>
-	</p>
-	<p>
-		<input type='text' name='contactEmail' value='' placeholder='Your email address'></input>
-		<span><input type='radio' name='radioButton' value='email is preferred' checked>Email is preferred</input></span>
-	</p>
-	<p>
-		<input type='text' name='contactPhone' value='' placeholder='Your phone number'></input>
-		<span><input type='radio' name='radioButton' value='text is preferred'>Text message is preferred</input></span>
-	</p>
-		<input type='submit' name='submit' value='Submit'></input>
-	
+<section class="form">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Edit Ad</h2>
+			<form method="POST" action=''>
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Ad information</legend>
+							<label for="title">Title</label>
+							<input id="title" type="text" name="title" placeholder="User title here..." value="" />
+							<label for="description">Description</label>
+							<textarea id="description" name="description" rows="10" placeholder="User description here..."></textarea>
+							<label for="price">Price</label>
+							<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Your contact information</legend>		
+							<label for="contactName">Name</label>
+							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="" />
+							<label for="contactEmail">Email</label>
+							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="" />
+							<label for="contactPhone">Phone number</label>
+							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="" />
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-8 columns">
+						<fieldset>
+							<legend>Preferred contact method</legend>
+							<input type="radio" name="contactMethod" value="email-preferred" id="emailPreferred" checked /><label for="emailPreferred">Email</label>
+							<input type="radio" name="contactMethod" value="text-preferred" id="textPreferred" /><label for="textPreferred">Text</label>
+						</fieldset>
+					</div>
+				</div>
 
-
-<!-------- Need to add an image-upload/delete feature here ---------->
-
-
-</form>
+			<!-- Need to add an image-upload/delete feature here -->
+				
+				<div class="row">
+					<div class="large-8 columns">
+						<input type='submit' name='submit' value='Submit edits' class="button small radius">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
 
 <?php require_once '../views/partials/footer.php'; ?>
     <script src="js/vendor/jquery.js"></script>

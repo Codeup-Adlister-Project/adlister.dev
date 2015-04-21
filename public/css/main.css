@@ -24,6 +24,7 @@ footer {
 
 footer p {
     margin-bottom: 0;
+    color: #AAAAAA;
 }
 
 body, p, a {
@@ -156,11 +157,66 @@ section#featured {
     padding-top: 2.5em;
 }
 
+section.form {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+label, legend {
+    font-family: 'Montserrat', Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    color: #4E6178;
+}
+
+fieldset legend {
+    /*font-size: .875rem;*/
+    font-weight: 400;
+    background: #f8f8f8;
+}
+
+fieldset label {
+    font-size: inherit;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;   
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+fieldset textarea {
+    resize: vertical;
+}
+
+label input,
+label textarea {
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;   
+}
+
+input[type="radio"] + label {
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;   
+    text-transform: none;
+    letter-spacing: 0;    
+    color: #4E6178;
+}
+
+input[type="submit"] {
+    color: #fff;
+    margin-top: 1.5rem;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+    color: #fff;
+}
+
 h5.featured-ads {
     margin-bottom: 2.25em;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
-    color: #B6B9C4;
+    color: #9CA3B1;
 }
 
 .ad {
@@ -198,7 +254,7 @@ h5.featured-ads {
 }
 
 .ad-disabled {
-    border-top: 0.625em solid #B6B9C4;
+    border-top: 0.625em solid #9CA3B1;
     height: 100%;
     -webkit-box-shadow: none;
     -moz-box-shadow:    none;
@@ -234,7 +290,7 @@ h5.featured-ads {
 }
 
 .panel-disabled .view-ad a {
-    color: #B6B9C4;
+    color: #9CA3B1;
 }
 
 .panel-disabled .view-ad a:hover {
