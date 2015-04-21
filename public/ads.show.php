@@ -1,4 +1,22 @@
 <!-- Shows a single ad that has been clicked from the ads.index.php-->
+
+<?php 
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../models/Ad.php');
+
+    function pageController()
+    {
+        $data =['ads' => Ad::all()];
+
+        return $data;   
+
+    }
+    // extract() will turn all the associative indices in the above $data array into variables that can be called directly later.
+    // For example: $data['ads'] can now just be called by $ads
+    extract(pageController()); 
+
+?>
+
 <!doctype html>
 <html lang="en-US" class="no-js">
 <head>
@@ -13,16 +31,28 @@
 <?php require_once '../views/partials/navbar.php'; ?>
 
 <div class="ads">
-	<h3>2005 Chrysler Sebring</h3>
-	<img src="img/myVehicle.jpg">
-	<p><Description:</strong> Good condition, minor body work, no mechanical problems.</p>
-	<p>Price: $2,500</p>
-	<p>Contact Jamie if interested:
-		<ul>
-			<li>Email: email@gmail.com</li>
-			<li>Cell: 555-555-5555</li>
-		</ul>
-	</p>
+	<div class="large-4 medium-6 columns">       
+        <div class="ad">
+            <div class="panel">
+
+				<?php foreach($ads as $ad) { ?>
+					<?php if($ad['id'] == $_GET['id']) { ?>
+						<h3><?= $ad['title']; ?></h3>
+					    <a href="#"><img src="<?= $ad['image_url']; ?>"></a>
+					    <p><span class="pre">Description</span><span class="description"><?= $ad['description']; ?></span></p>
+					    <p><span class="pre">Price</span><span class="price">$<?= $ad['price']; ?></span></p>
+					    <p>Contact <?= $ad['contact_name']; ?> if interested:
+					        <ul>
+					            <li>Email: <?= $ad['contact_email']; ?></li>
+					            <li>Cell: <?= $ad['contact_phone']; ?></li>
+					        </ul>
+					    </p>
+					<?php } ?>
+				<?php } ?>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php require_once '../views/partials/footer.php'; ?>
