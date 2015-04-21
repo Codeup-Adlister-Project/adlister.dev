@@ -5,9 +5,12 @@
 	$seeder = new BaseModel;
 	$dbc = $seeder->getDbConnect();
 
-	$emptyTable = 'TRUNCATE TABLE ads';
-	$dbc->exec($emptyTable);
 
+	// Seed ads table
+	//-------------------------------------------------//
+
+	$emptyAds = 'TRUNCATE TABLE ads';
+	$dbc->exec($emptyAds);
 
 	$ads = [
 		[
@@ -42,7 +45,6 @@
 		]
 	];
 
-
 	$query = "INSERT INTO ads (user_id, contact_name, contact_email, contact_phone, title, description, price, image_url)
 		VALUES (:user_id, :contact_name, :contact_email, :contact_phone, :title, :description, :price, :image_url)";
 
@@ -59,9 +61,47 @@
 		$stmt->bindValue(':image_url', $ad['image_url'], PDO::PARAM_STR);
 		$stmt->execute();
 
-		echo "Inserted ID: ".$dbc->lastInsertId().PHP_EOL;
+		echo "Inserted Ad: ".$dbc->lastInsertId().PHP_EOL;
 	}
 
+
+	// Seed users table
+	//-------------------------------------------------//
+
+	$emptyUsers = 'TRUNCATE TABLE users';
+	$dbc->exec($emptyUsers);
+
+	$users = [
+		[ 
+			'username'	    =>	'justin123', 
+			'password'	    =>	'password', 
+			'contact_email'	=>	'justy@email.com'
+		],
+		[ 
+			'username'	    =>	'jamie123', 
+			'password'    	=>	'password', 
+			'contact_email'	=>	'jamie@email.com'
+		],
+		[ 
+			'username'	    =>	'isaac123', 
+			'password'  	=>	'password', 
+			'contact_email'	=>	'icebro@email.com'
+		]
+	];
+
+	$sql = "INSERT INTO users (  username,  password,  contact_email )
+		    VALUES            ( :username, :password, :contact_email )";
+
+	$stmt = $dbc->prepare($sql);
+
+	foreach ($users as $user) {	
+		$stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
+		$stmt->bindValue(':password', $user['password'], PDO::PARAM_STR);
+		$stmt->bindValue(':contact_email', $user['contact_email'], PDO::PARAM_STR);
+		$stmt->execute();
+
+		echo "Inserted User: ".$dbc->lastInsertId().PHP_EOL;
+	}
 
 
 
