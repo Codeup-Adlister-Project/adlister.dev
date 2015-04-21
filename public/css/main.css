@@ -4,7 +4,7 @@ html, body {
     padding: 0;
     height: 100%;
 }
-
+ 
 #wrap {
     min-height: 100%;
     position: relative;
@@ -170,7 +170,6 @@ label, legend {
 }
 
 fieldset legend {
-    /*font-size: .875rem;*/
     font-weight: 400;
     background: #f8f8f8;
 }
