@@ -27,7 +27,7 @@ with the new input-->
 							<label for="title">Title</label>
 							<input id="title" type="text" name="title" placeholder="User title here..." value="" />
 							<label for="description">Description</label>
-							<textarea id="description" name="description" rows="10" placeholder="User description here..."></textarea>
+							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"></textarea>
 							<label for="price">Price</label>
 							<input id="price" type="text" name="price" placeholder="User price here..." value="" />
 						</fieldset>

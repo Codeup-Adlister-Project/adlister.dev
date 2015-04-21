@@ -64,7 +64,7 @@
 		}
 
 	    // Persist the object to the database
-	    public function save()
+	    public function save()		// Doesn't seem to work for updates, always directs to insert() method
 	    {
 	        // Ensure there are attributes before attempting to save
 	        if (!empty($this->attributes)) {
@@ -105,7 +105,7 @@
 			$insert->execute();
 
 			// If inserting new id, add the id to the attributes array so the object can properly reflect the id as well
-			$this->id = self::$dbc->lastInsertId();
+			return $this->id = self::$dbc->lastInsertId();
 		}
 
 		public function update($columns, $columnsPlaceholders)
@@ -182,7 +182,7 @@
 	    {
 	        self::dbConnect();
 
-	        return self::$dbc->query('SELECT * FROM ' . static::$table . ';')->fetchAll(PDO::FETCH_ASSOC);
+	        return self::$dbc->query("SELECT * FROM " . static::$table . " ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 	    }
 
 	}
