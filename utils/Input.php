@@ -124,7 +124,7 @@ class Input
             }
         }
 
-        return true;
+        return $email;
      
     }
 
