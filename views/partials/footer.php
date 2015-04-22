@@ -19,7 +19,7 @@
 <!-- Log-in Pop-up Modal Window -->
     <div id="loginModal" class="reveal-modal small" data-reveal aria-labelledby="login" aria-hidden="true" role="dialog">
 
-        // If not logged in, require the log-in form inside the modal
+        <!-- If not logged in, require the log-in form inside the modal -->
         <?php if(!Auth::check()){
                 require_once 'auth.login.php'; 
             }
