@@ -102,6 +102,7 @@
 			$ad->title = $newTitle;
 			$ad->description = $newDescription;
 			$ad->price = $newPrice;
+			$ad->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
 			$ad->save();
 
 			// Reset the $savedInput array back to its original content so the form appears blank.

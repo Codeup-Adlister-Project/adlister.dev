@@ -19,20 +19,26 @@
 				description TEXT,
 				price FLOAT NOT NULL,
 				image_url BLOB,
-				date_created DATE NOT NULL,
+				date_created VARCHAR(255) NOT NULL,
 				PRIMARY KEY (id)
-			)";
+			)";						// Note: date_created as VARCHAR datatype is intentional;
+									// it will be auto-entered by forms as a string
 
 	$dbc->exec($query);
 
+
 	// Users table
+	$drop2 = 'DROP TABLE IF EXISTS users';
+	$dbc->exec($drop2);
+
 	$sql = "CREATE TABLE IF NOT EXISTS users (
 				user_id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 				username VARCHAR(25) NOT NULL,
 				password VARCHAR(25) NOT NULL,
 				contact_email VARCHAR(255) NOT NULL,
-				date_created DATE NOT NULL,
+				date_created VARCHAR(255) NOT NULL,
 				PRIMARY KEY (user_id)		
-			)";
+			)";						// Note: date_created as VARCHAR datatype is intentional;
+									// it will be auto-entered by forms as a string
 
 	$dbc->exec($sql);
