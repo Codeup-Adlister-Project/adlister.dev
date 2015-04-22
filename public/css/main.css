@@ -331,7 +331,7 @@ h5.featured {
     font-family: 'Anonymous Pro', monospace;
     font-weight: 400;
     color: #7FDBFF;
-    letter-spacing: 0.0625rem;
+    letter-spacing: 0.025rem;
 }
 
 .top-bar .name h1 a {

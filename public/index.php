@@ -23,14 +23,27 @@
     </div>
 
     <div class="row main-button">
-        <div class="large-3 medium-3 columns">
-            <a class="small button radius hide-for-small" href="#" data-reveal-id="loginModal">Log in</a>
-            <a class="small button radius show-for-small" href="#" data-reveal-id="loginModal">Log in</a>
-        </div>
-        <div class="large-3 medium-3 columns end">
-            <a class="small button radius secondary hide-for-small" href="users.create.php">Sign up</a>
-            <a class="small button radius secondary show-for-small" href="users.create.php">Sign up</a>
-        </div>
+        <!-- If user already logged in, show 'create new ad' and 'view all ads' buttons -->
+        <?php if(Auth::check()) { ?>
+            <div class="large-3 medium-4 columns">
+                <a class="small button radius hide-for-small" href="ads.create.php">Create new ad</a>
+                <a class="small button radius show-for-small" href="ads.create.php">Create new ad</a>
+            </div>
+            <div class="large-3 medium-4 columns end">
+                <a class="small button radius secondary hide-for-small" href="ads.index.php">View all ads</a>
+                <a class="small button radius secondary show-for-small" href="ads.index.php">View all ads</a>
+            </div>
+        <!-- If user not logged in, show 'log in' and 'sign up' buttons -->
+        <?php } else { ?>
+            <div class="large-3 medium-3 columns">
+                <a class="small button radius hide-for-small" href="#" data-reveal-id="loginModal">Log in</a>
+                <a class="small button radius show-for-small" href="#" data-reveal-id="loginModal">Log in</a>
+            </div>
+            <div class="large-3 medium-3 columns end">
+                <a class="small button radius secondary hide-for-small" href="users.create.php">Sign up</a>
+                <a class="small button radius secondary show-for-small" href="users.create.php">Sign up</a>
+            </div>
+        <?php } ?>
     </div>
 
     <div class="row">
