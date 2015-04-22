@@ -1,5 +1,4 @@
 <!-- Displays a form for creating a new add in the database -->
-<!doctype html>
 
 <?php 
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
@@ -130,6 +129,7 @@
 
 ?>	
 
+<!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
     <meta charset="utf-8" />

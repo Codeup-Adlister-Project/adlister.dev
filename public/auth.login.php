@@ -5,7 +5,7 @@
 	require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
 
-	// If user is already logged in, redirect to profile page and don't run rest of PHP
+	// If user is already logged in and gets to auth.login.php manually, redirect to profile page and don't run rest of PHP
 	if(Auth::check()){
 		header("Location: users.show.php");
 		exit();
@@ -16,15 +16,15 @@
 	$password = Input::has('password') ? Input::get('password') : '';
 	$errorMessage = '';
 
+	// Once login form is submitted, check their credentials. If they pass, refresh the current page and exit out ofsubsequent php.
+	// If credentials fail, generate error message and footer.php re-reveals pop-up modal window. 
 	if($_POST) {
-
+		
 		Auth::attempt($username, $password);
-
+		
 		if(isset($_SESSION['LOGGED_IN_USER'])){
-			// redirect to authorization page and exit() any remaining PHP script
-			// header("Location: users.show.php");
-			// echo "this worked";
-			// $errorMessage = "this worked!";
+			// Page needs to reload in order for browser to register $_SESSION sent from modal
+			header("Location: http://adlister.dev/" . $_SERVER['PHP_SELF']);
 			exit();
 		} else {
 			$errorMessage = "Wrong username or password";
@@ -37,7 +37,7 @@
 	<h1><?= $errorMessage; ?></h1>
 <?php endif; ?>
 <h2 id="login">Log in</h2>
-<form method="POST" action="#">
+<form method="POST" action="">
 	<label for="name">Username</label>
 	<input type="text" name="username" id="name" />
 	<label for="pswd">Password</label>
