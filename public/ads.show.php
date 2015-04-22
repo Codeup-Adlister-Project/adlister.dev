@@ -30,10 +30,10 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-<section id="show-ad">
+<section id="show">
     <div class="row">
     	<div class="medium-8 columns">       
-            <div class="ad">
+            <div class="post">
                 <div class="panel view">
 
     				<?php foreach($ads as $ad) { ?>
@@ -48,9 +48,9 @@
 					            <li><span class="pre">Phone</span><?= $ad['contact_phone']; ?></li>
 					        </ul>
                                 <?php if(count($ads) == $ad['id']) { ?>
-                                        <p class="view-ad"><a href="ads.index.php">Back to all ads <i class="fa fa-chevron-circle-right"></i></a></p>
+                                        <p class="view-post"><a href="ads.index.php">Back to all ads <i class="fa fa-chevron-circle-right"></i></a></p>
                                 <?php } else { ?>
-                                        <p class="view-ad"><a href="ads.show.php?id=<?= $ad['id']-1; ?>">View next ad <i class="fa fa-chevron-circle-right"></i></a></p>
+                                        <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']-1; ?>">View next ad <i class="fa fa-chevron-circle-right"></i></a></p>
         					<?php } ?>
         				<?php } ?>
                     <?php } ?>

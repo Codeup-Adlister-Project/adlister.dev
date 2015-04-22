@@ -158,8 +158,8 @@ h3 a:active {
 }
 
 section#featured,
-section#all-ads,
-section#show-ad {
+section#all,
+section#show {
     padding-top: 2.5em;
 }
 
@@ -217,14 +217,14 @@ input[type="submit"]:focus {
     color: #fff;
 }
 
-h5.featured-ads {
+h5.featured {
     margin-bottom: 2.25em;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
     color: #9CA3B1;
 }
 
-.ad {
+.post {
     border-top: 0.625em solid #344B65;
     -webkit-box-shadow: 0px 3px 2px 0px rgba(0, 22, 45, 0.15);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow:    0px 3px 2px 0px rgba(0, 22, 45, 0.15);  /* Firefox 3.5 - 3.6 */
@@ -267,7 +267,7 @@ h5.featured-ads {
     font-weight: 700;
 }
 
-.ad-disabled {
+.post-disabled {
     border-top: 0.625em solid #9CA3B1;
     height: 100%;
     -webkit-box-shadow: none;
@@ -283,31 +283,31 @@ h5.featured-ads {
 }
 
 
-.view-ad {
+.view-post {
     text-align: right;
     border-top: 1px solid #D8D8D8;
     padding-top: 1.25rem;
 }
 
-.view-ad a {
+.view-post a {
     font-family: 'Montserrat', Verdana, sans-serif;   
     font-weight: 400; 
     text-transform: uppercase;
     letter-spacing: 0.0375rem;
 }
 
-.panel-disabled .view-ad {
+.panel-disabled .view-post {
     border-top: none;
     position: absolute;
     bottom: 1.5rem;
     right: 1.5rem;
 }
 
-.panel-disabled .view-ad a {
+.panel-disabled .view-post a {
     color: #9CA3B1;
 }
 
-.panel-disabled .view-ad a:hover {
+.panel-disabled .view-post a:hover {
     color: #92939C;
 }
 
