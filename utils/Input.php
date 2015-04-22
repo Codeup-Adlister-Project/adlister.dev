@@ -2,29 +2,20 @@
 
 class Input
 {
-    /**
-     * Check if a given value was passed in the request
-     *
-     * @param string $key index to look for in request
-     * @return boolean whether value exists in $_POST or $_GET
-     */
+    // Check if a given value was passed in the request
     public static function has($key)
     {
         return isset($_REQUEST[$key]) ? true : false;
     }
 
-    /**
-     * Get a requested value from either $_POST or $_GET
-     *
-     * @param string $key index to look for in index
-     * @param mixed $default default value to return if key not found
-     * @return mixed value passed in request
-     */
+/////////////////////////////////////////////////////////////////
+    // Get a requested value from either $_POST or $_GET
     public static function get($key, $default = NULL)
     {
         return self::has($key) ? $_REQUEST[$key] : $default; 
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getString($key, $min = NULL, $max = NULL)
     {
         $keyValue = self::get($key);
@@ -52,6 +43,7 @@ class Input
         return trim($keyValue);
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getNumber($key, $min = NULL, $max = NULL)
     {
         $keyValue = trim(self::get($key));
@@ -79,6 +71,7 @@ class Input
         return (float)$keyValue;
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getDate($key)
     {
         // Re-format the user inputted date to the correct format, using PHP library functions, before passing to MySQL 
@@ -95,6 +88,7 @@ class Input
         }
     }
 
+/////////////////////////////////////////////////////////////////
     public static function validateEmail($key)    // Found on stackoverflow: 'Best email validation function'
     {
         $email = self::get($key);
@@ -126,6 +120,19 @@ class Input
 
         return $email;
      
+    }
+
+/////////////////////////////////////////////////////////////////
+    public static function areIdentical($key1, $key2)
+    {
+        $value1 = self::get($key1);
+        $value2 = self::get($key2);
+
+        if ($value1 === $value2) {
+            return true;
+        } else {
+            throw new Exception("{$key1}: $value1 and {$key2}: $value2 are not identical.");
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
