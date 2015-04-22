@@ -22,7 +22,9 @@
 
 		if(isset($_SESSION['LOGGED_IN_USER'])){
 			// redirect to authorization page and exit() any remaining PHP script
-			header("Location: users.show.php");
+			// header("Location: users.show.php");
+			// echo "this worked";
+			// $errorMessage = "this worked!";
 			exit();
 		} else {
 			$errorMessage = "Wrong username or password";
