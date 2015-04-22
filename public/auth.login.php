@@ -24,7 +24,7 @@
 		
 		if(isset($_SESSION['LOGGED_IN_USER'])){
 			// Page needs to reload in order for browser to register $_SESSION sent from modal
-			header("Location: http://adlister.dev/" . $_SERVER['PHP_SELF']);
+			header("Location: http://adlister.dev" . $_SERVER['PHP_SELF']);
 			exit();
 		} else {
 			$errorMessage = "Wrong username or password";
