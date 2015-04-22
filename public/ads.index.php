@@ -28,23 +28,23 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-    <section id="all-ads"> 
+    <section id="all"> 
         <div class="row">
             <div class="small-12 columns">
-                <h5 class="featured-ads">All ads</h5>
+                <h5 class="featured">All ads</h5>
             </div>
         </div>   
         <div class="row">
            
             <?php foreach($ads as $ad){ ?>
                 <div class="large-4 medium-6 columns">       
-                    <div class="ad">
+                    <div class="post">
                         <div class="panel">
                             <h3><a href="ads.show.php?id=<?= $ad['id']; ?>"><?= $ad['title']; ?></a></h3>
                             <a href="ads.show.php?id=<?= $ad['id']; ?>"><img src="<?= $ad['image_url']; ?>"></a>
                             <p><span class="pre">Description</span><span class="description"><?= $ad['description']; ?></span></p>
                             <p><span class="pre">Price</span><span class="price">$<?= $ad['price']; ?></p>
-                            <p class="view-ad"><a href="ads.show.php?id=<?= $ad['id']; ?>">View <i class="fa fa-chevron-circle-right"></i></a></span></p>
+                            <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']; ?>">View <i class="fa fa-chevron-circle-right"></i></a></span></p>
                         </div>
                     </div>
                 </div>
