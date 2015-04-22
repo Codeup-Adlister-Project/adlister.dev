@@ -153,7 +153,6 @@
 					} 
 				?>
 			<form id="createAd" method="POST">
-				<input type='hidden' name='date' value="<?= date('l\, F jS\, Y \a\t h:i:s A'); ?>">
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
