@@ -69,19 +69,13 @@
 		}
 
 		try {
-			
-			$newEmail = Input::getString('contactEmail', 2, 75);
-		
-		} catch (DomainException $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Your email must be an alphanumeric string of characters.";
-		} catch (LengthException $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Your email must be between 2 and 75 characters long.";
-		} catch (Exception $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Woops, an error occured, please try entering a valid email.";
-		}
+            
+            $newEmail = Input::validateEmail('contactEmail');
+        
+        } catch (Exception $e) {
+            $errors[] = $e->getMessage();
+            $errorMessages['contactEmail'] = "Invalid email format";
+        } 
 	
 		try {
 			
@@ -147,7 +141,7 @@
 <?php require_once '../views/partials/navbar.php'; ?>
 
 
-<!----------------------- Form Field to Create a New Ad ---------------------->
+<!----------------------- Start Form Field to Create a New Ad ---------------------->
 
 <section class="form">
 	<div class="row">
@@ -165,7 +159,7 @@
 							<legend>Ad information</legend>
 							<label for="title">Title</label>
 							<input type='text' id='title' name='title' value="<?= $savedInput['title']; ?>" placeholder='Title' required />
-								<?php if(!empty($errors)){
+								<?php if(!empty($errorMessages['title'])){
 									echo "<span class='error'>" . $errorMessages['title'] . "</span>";
 								 } 
 								?>
@@ -173,7 +167,7 @@
 							<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
 							<label for="price">Price</label>
 							$<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
-								<?php if(!empty($errors)){
+								<?php if(!empty($errorMessages['price'])){
 									echo "<span class='error'>" . $errorMessages['price'] . "</span>";
 								 } 
 								?>
@@ -186,19 +180,19 @@
 							<legend>Your contact information</legend>		
 							<label for="contactName">Name</label>
 							<input type='text' id='contactName' name='contactName' value="<?= $savedInput['contactName']; ?>" placeholder='Your name' required />
-								<?php if(!empty($errors)){
+								<?php if(!empty($errorMessages['contactName'])){
 									echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
 								 } 
 								?>
 							<label for="contactEmail">Email</label>
 							<input type='text' id='contactEmail' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Your email address' required />
-								<?php if(!empty($errors)){
+								<?php if(!empty($errorMessages['contactEmail'])){
 									echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
 								 } 
 								?>
 							<label for="contactPhone">Phone number</label>
 							<input type='text' id='contactPhone' name='contactPhone' value="<?= $savedInput['contactPhone']; ?>" placeholder='Your phone number' />
-								<?php if(!empty($errors)){
+								<?php if(!empty($errorMessages['contactPhone'])){
 									echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
 								 } 
 								?>
