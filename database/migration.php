@@ -19,6 +19,7 @@
 				description TEXT,
 				price FLOAT NOT NULL,
 				image_url BLOB,
+				date_created DATE NOT NULL,
 				PRIMARY KEY (id)
 			)";
 
@@ -30,6 +31,7 @@
 				username VARCHAR(25) NOT NULL,
 				password VARCHAR(25) NOT NULL,
 				contact_email VARCHAR(255) NOT NULL,
+				date_created DATE NOT NULL,
 				PRIMARY KEY (user_id)		
 			)";
 
