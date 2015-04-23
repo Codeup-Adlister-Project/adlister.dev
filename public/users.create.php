@@ -47,7 +47,6 @@
         try {
 
             $newPassword = Input::getString('password', 8, 75);
-            $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
         } catch (DomainException $e) {
             $errors[] = $e->getMessage();
@@ -82,6 +81,9 @@
 
         // If no errors occur, go ahead and insert the form into the database
         if (empty($errors)) {
+            // Hash the new password
+            $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            
             $user = new User;
             $user->username = $newUsername;
             $user->password = $newPassword;
