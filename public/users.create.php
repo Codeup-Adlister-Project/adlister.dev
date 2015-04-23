@@ -60,8 +60,8 @@
         }
 
         try {
-
-            $checkPswd = Input::areIdentical('password', 'checkPswd');
+            // Make sure both passwords entered are identical
+            Input::areIdentical('password', 'checkPswd');
 
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
@@ -81,12 +81,10 @@
 
         // If no errors occur, go ahead and insert the form into the database
         if (empty($errors)) {
-            // Hash the new password
-            $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-            
+
             $user = new User;
             $user->username = $newUsername;
-            $user->password = $newPassword;
+            $user->password = password_hash($newPassword, PASSWORD_DEFAULT);
             $user->contact_email = $newEmail;   // add a try/catch and a method in BaseModel that checks to see if email already exists
             $user->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
             $user->save();
