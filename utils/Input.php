@@ -12,7 +12,7 @@ class Input
     // Get a requested value from either $_POST or $_GET
     public static function get($key, $default = NULL)
     {
-        return self::has($key) ? $_REQUEST[$key] : $default; 
+        return self::has($key) ? $_REQUEST[$key] : $default;
     }
 
 /////////////////////////////////////////////////////////////////
@@ -119,7 +119,6 @@ class Input
         }
 
         return $email;
-     
     }
 
 /////////////////////////////////////////////////////////////////
