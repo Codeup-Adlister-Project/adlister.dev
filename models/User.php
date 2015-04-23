@@ -48,9 +48,9 @@
     		$realPassword = self::getPassword($username);
 
     		if(password_verify($inputPassword, $realPassword)) {
-    			echo true;
+    			return true;
     		} else {
-    			echo false;
+    			return false;
     		}
 	    }
 
