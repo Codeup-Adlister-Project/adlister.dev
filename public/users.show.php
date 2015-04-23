@@ -11,6 +11,8 @@
         header("Location: index.php");
         exit();
     }
+
+    // Get the user's ads
 ?>
 
 <!doctype html>
@@ -26,22 +28,30 @@
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-	<h1>You are logged in <?= $user; ?>!</h1>
-	<h3>Look at your beautiful profile page! @_@</h3>
-	<ul>
-		<li>Username: <?= $user; ?></li>
-		<li><a href="users.edit.php">Change Password</a></li>
-		<li>Email: <a href="users.edit.php">Change Email</a></li>
-	</ul>
+<section id="account">
+    <div class="row">
+        <div class="small-12 columns">
+            <h5 class="featured">My Account</h5>
+        </div>
+    </div> 
+    <div class="row">
+        <div class="small-12 columns">
+        	<h2>Hello, <?= $user; ?>!</h2>
+        	<ul>
+        		<li><span class="pre">Username</span><?= $user; ?></li>
+        		<li><span class="pre">Email</span></li>
+                <li><span class="pre">Member since</span></li>
+        	</ul>
 
-		<a href="users.edit.php"><button>Edit Profile</button></a>
-        <a href="ads.create.php"><button>Create New Ad</button></a>
-	
-    <br>
-    <hr>
-    <h3>Your Ads:</h3>
-<!-- Add a section that shows the user's posted ads -->
-
+    		<a href="users.edit.php" class="button small radius">Edit Profile</a>
+            <a href="ads.create.php" class="button small radius">Create New Ad</a>
+        	
+            <hr>
+            <h3>My Ads</h3>
+            <!-- Add a section that shows the user's posted ads -->
+        </div>
+    </div>
+</section>
 
 <?php require_once '../views/partials/footer.php'; ?>
 

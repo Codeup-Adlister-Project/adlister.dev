@@ -29,7 +29,14 @@ with the new input-->
 							<label for="description">Description</label>
 							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"></textarea>
 							<label for="price">Price</label>
-							<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+							<div class="row collapse">
+								<div class="small-2 medium-1 columns">
+									<span class="prefix">$</span>
+								</div>
+								<div class="small-10 medium-11 columns">
+									<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+								</div>
+							</div>
 						</fieldset>
 					</div>
 				</div>
