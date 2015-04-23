@@ -47,7 +47,7 @@
 					            <li><span class="pre">Email</span><?= $ad['contact_email']; ?></li>
 					            <li><span class="pre">Phone</span><?= $ad['contact_phone']; ?></li>
 					        </ul>
-                                <?php if(count($ads) == $ad['id']) { ?>
+                                <?php if($ad['id'] == 1) { ?>
                                         <p class="view-post"><a href="ads.index.php">Back to all ads <i class="fa fa-chevron-circle-right"></i></a></p>
                                 <?php } else { ?>
                                         <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']-1; ?>">View next ad <i class="fa fa-chevron-circle-right"></i></a></p>
