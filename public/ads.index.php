@@ -34,9 +34,8 @@
             </div>
         </div>   
         <div class="row">
-           
-            <?php foreach($ads as $ad){ ?>
-                <div class="large-4 medium-6 columns">       
+            <?php foreach($ads as $ad) { ?>
+                <div class="large-4 medium-6 columns <?php if($ad['id'] == 1){ echo 'end'; }?>">
                     <div class="post">
                         <div class="panel">
                             <h3><a href="ads.show.php?id=<?= $ad['id']; ?>"><?= $ad['title']; ?></a></h3>
@@ -48,7 +47,6 @@
                     </div>
                 </div>
             <?php } ?>
-        
         </div>  
     </section>
 

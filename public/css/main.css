@@ -248,11 +248,6 @@ h5.featured {
     margin-bottom: 1.75rem;
 }
 
-.panel p:nth-last-child(2),
-.panel.view ul:nth-last-child(2) {
-    margin-bottom: 1.75rem;
-}
-
 .pre {
     font-weight: 700;
 }
@@ -329,6 +324,10 @@ span.prefix {
 
 }
 
+.top-bar-section ul li {
+    background: #1A3552;
+}
+
 .top-bar-section ul li > a {
     font-family: 'Anonymous Pro', monospace;
     font-weight: 400;
@@ -400,4 +399,47 @@ span.prefix {
     border-right: solid 1px #001F3F;
 }
 
-        
+/*---------------------------------------------------*/
+/* Drop down nav styles                              */
+/*---------------------------------------------------*/
+
+.top-bar-section .dropdown li a {
+    background: #1A3552; }
+  .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+    color: #7FDBFF;
+    background: #1A3552; }
+  .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
+    color: #7FDBFF;
+    background-color: #1A3552;
+    background: #1A3552; }
+  .top-bar-section .dropdown li label {
+    background: #1A3552; }
+
+.top-bar-section ul li:hover:not(.has-form)>a {
+    background-color: #1A3552;
+    background: #1A3552;
+}
+
+/************* Removes down arrow *************/
+
+.top-bar ul > li.has-dropdown a:after { 
+    content: "";
+    display: none;
+    width: 0;
+    height: 0;
+    border:0;
+    border-color: none;
+    border-left-style: none;
+    margin-right: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+    .top-bar-section .has-dropdown>a {
+        padding-right: .9375rem !important;
+    }
+
+/**********************************************/
+
+
