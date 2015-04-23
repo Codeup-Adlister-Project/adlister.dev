@@ -181,8 +181,14 @@
 	    public static function all()
 	    {
 	        self::dbConnect();
-
 	        return self::$dbc->query("SELECT * FROM " . static::$table . " ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+	    }
+
+	    // Find a random sample of records in a table, passing in the desired limit amount
+	    public static function random($limit)
+	    {
+	    	self::dbConnect();
+	    	return self::$dbc->query("SELECT * FROM " . static::$table . " ORDER BY RAND() LIMIT " . $limit)->fetchAll(PDO::FETCH_ASSOC);
 	    }
 
 	}
