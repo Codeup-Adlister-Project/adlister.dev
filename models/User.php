@@ -44,10 +44,10 @@
 	    	$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
     		$dbc = $bm->getDbConnect();
 
-    		// If username exists, get their password from table
+    		// If username exists, get their hashed password from table
     		$realPassword = self::getPassword($username);
 
-    		if($realPassword === $inputPassword) {
+    		if(password_verify($inputPassword, $realPassword)) {
     			echo true;
     		} else {
     			echo false;
