@@ -36,5 +36,12 @@
                 </div>
             <?php } ?>  
 
+            <div class="large-4 medium-6 columns end">
+                <div class="post post-disabled">
+                    <div class="panel panel-disabled">
+                        <p class="view-post"><a href="ads.index.php">View all ads <i class="fa fa-chevron-circle-right"></i></a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
