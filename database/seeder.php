@@ -1,5 +1,5 @@
 <?php
-	
+
 	require_once '../models/BaseModel.php';
 
 	$seeder = new BaseModel;
@@ -14,21 +14,21 @@
 
 	$ads = [
 		[
-			'user_id'		=>	100, 
-			'contact_name'	=>	'Joe', 
-			'contact_email'	=>	'email@gmail.com', 
-			'contact_phone'	=>	'555-555-5555', 
-			'title'			=>	'2005 Chrysler Sebring', 
+			'user_id'		=>	100,
+			'contact_name'	=>	'Joe',
+			'contact_email'	=>	'email@gmail.com',
+			'contact_phone'	=>	'555-555-5555',
+			'title'			=>	'2005 Chrysler Sebring',
 			'description'	=>	'Good condition, minor body work, no mechanical problems.', 
-			'price'			=>	2500, 
+			'price'			=>	2500,
 			'image_url'		=>	'/img/myVehicle.jpg',
 			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
 		],
 		[
-			'user_id'		=>	200, 
-			'contact_name'	=>	'Bob', 
-			'contact_email'	=>	'email@gmail.com', 
-			'contact_phone'	=>	'555-555-5555', 
+			'user_id'		=>	200,
+			'contact_name'	=>	'Bob',
+			'contact_email'	=>	'email@gmail.com',
+			'contact_phone'	=>	'555-555-5555',
 			'title'			=>	'2010 Chrysler Sebring', 
 			'description'	=>	'Good condition, minor body work, no mechanical problems.', 
 			'price'			=>	3800, 
@@ -36,7 +36,7 @@
 			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
 		],
 		[
-			'user_id'		=>	300, 
+			'user_id'		=>	300,
 			'contact_name'	=>	'Kevin', 
 			'contact_email'	=>	'email@gmail.com', 
 			'contact_phone'	=>	'555-555-5555', 
@@ -78,20 +78,26 @@
 	$users = [
 		[ 
 			'username'	    =>	'justin123', 
-			'password'	    =>	'password', 
+			'password'	    =>	password_hash('password', PASSWORD_DEFAULT),
 			'contact_email'	=>	'justy@email.com',
 			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
 		],
 		[ 
 			'username'	    =>	'jamie123', 
-			'password'    	=>	'password', 
+			'password'    	=>	password_hash('password', PASSWORD_DEFAULT),
 			'contact_email'	=>	'jamie@email.com',
 			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
 		],
 		[ 
 			'username'	    =>	'isaac123', 
-			'password'  	=>	'password', 
+			'password'  	=>	password_hash('password', PASSWORD_DEFAULT),
 			'contact_email'	=>	'icebro@email.com',
+			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
+		],
+		[ 
+			'username'	    =>	'test', 
+			'password'    	=>	password_hash('testertester', PASSWORD_DEFAULT),
+			'contact_email'	=>	'jamie@email.com',
 			'date_created'	=>	date('l\, F jS\, Y \a\t h:i:s A')
 		]
 	];
