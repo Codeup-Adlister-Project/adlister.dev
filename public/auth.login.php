@@ -10,7 +10,7 @@
 		header("Location: users.show.php");
 		exit();
 	}
-	
+
 	// If user is not logged in, ask for credentials
 	$username = Input::has('username') ? Input::get('username') : '';
 	$password = Input::has('password') ? Input::get('password') : '';
@@ -19,9 +19,9 @@
 	// Once login form is submitted, check their credentials. If they pass, refresh the current page and exit out ofsubsequent php.
 	// If credentials fail, generate error message and footer.php re-reveals pop-up modal window. 
 	if($_POST) {
-		
+
 		Auth::attempt($username, $password);
-		
+
 		if(isset($_SESSION['LOGGED_IN_USER'])){
 			// Page needs to reload in order for browser to register $_SESSION sent from modal
 			header("Location: http://adlister.dev" . $_SERVER['PHP_SELF']);
