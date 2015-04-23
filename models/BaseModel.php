@@ -174,7 +174,8 @@
 	            $instance = new static;
 	            $instance->attributes = $result;
 	        }
-	        return $instance;
+	        // return $instance;
+	        return $result;
 	    }
 
 	    // Find all records in a table
@@ -194,3 +195,4 @@
 	}
 
 ?>
+
