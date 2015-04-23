@@ -1,15 +1,19 @@
 <?php
 
 	require_once 'Log.php';
+	require_once '../models/User.php';
+
 
 	class Auth
 	{
-		public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
+		public static $password;
 
 		// verifies if the user provided the correct username and password
 		public static function attempt($username, $password)
 		{
-			if($username == 'guest' && password_verify($password, self::$password)){
+			$correctCredentials = User::verifyLogin($username, $password);
+
+			if($correctCredentials){
 				// clear session array of any data from previous sessions
 				$_SESSION = array();
 				// store user's username to pass to next page
