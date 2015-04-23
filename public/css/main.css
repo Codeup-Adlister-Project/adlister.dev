@@ -263,6 +263,10 @@ h5.featured {
     content: ": ";
 }
 
+span.prefix {
+    color: #999;
+}
+
 .contact {
     font-weight: 700;
 }

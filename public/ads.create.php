@@ -166,11 +166,18 @@
 							<label for="description">Description</label>
 							<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
 							<label for="price">Price</label>
-							$<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
-								<?php if(!empty($errorMessages['price'])){
-									echo "<span class='error'>" . $errorMessages['price'] . "</span>";
-								 } 
-								?>
+							<div class="row collapse">
+								<div class="small-2 medium-1 columns">
+									<span class="prefix">$</span>
+								</div>
+								<div class="small-10 medium-11 columns">
+									<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
+								</div>
+									<?php if(!empty($errorMessages['price'])){
+										echo "<span class='error'>" . $errorMessages['price'] . "</span>";
+									 } 
+									?>
+							</div>
 						</fieldset>
 					</div>
 				</div>
