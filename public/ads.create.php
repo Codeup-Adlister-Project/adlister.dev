@@ -1,10 +1,13 @@
 <!-- Displays a form for creating a new add in the database -->
 
-<?php 
-    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
-    require_once($_SERVER['DOCUMENT_ROOT'].'../../models/Ad.php');
-    require_once($_SERVER['DOCUMENT_ROOT'].'../../utils/Input.php');
-
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
+	
+	// If user is not logged in and gets to ads.create.php manually, redirect to home page and don't run rest of PHP
+	if(!Auth::check()){
+		header("Location: index.php");
+		exit();
+	}
+   	
    	// set default timezone
    	date_default_timezone_set('America/Chicago');
 
@@ -66,19 +69,13 @@
 		}
 
 		try {
-			
-			$newEmail = Input::getString('contactEmail', 2, 75);
-		
-		} catch (DomainException $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Your email must be an alphanumeric string of characters.";
-		} catch (LengthException $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Your email must be between 2 and 75 characters long.";
-		} catch (Exception $e) {
-			$errors[] = $e->getMessage();
-			$errorMessages['contactEmail'] = "Woops, an error occured, please try entering a valid email.";
-		}
+            
+            $newEmail = Input::validateEmail('contactEmail');
+        
+        } catch (Exception $e) {
+            $errors[] = $e->getMessage();
+            $errorMessages['contactEmail'] = "Invalid email format";
+        } 
 	
 		try {
 			
@@ -105,8 +102,13 @@
 			$ad->title = $newTitle;
 			$ad->description = $newDescription;
 			$ad->price = $newPrice;
+			$ad->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
 			$ad->save();
 
+			// Reset the $savedInput array back to its original content so the form appears blank.
+			$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
+			echo "<h3>Add successfuly posted!</h3>";
+			echo "<a href='ads.index.php'><button type='button' name='seeAd'>View your ad</button></a>";
 
 			// $userInput = "INSERT INTO ads (contact_name, contact_email, contact_phone, title, description, price)
 			// 				VALUES (:contactName, :contactEmail, :contactPhone, :title, :description, :price)";
@@ -121,10 +123,6 @@
 			// $insert->execute();
 		}
 
-		// Reset the $savedInput array back to its original content so the form appears blank.
-		$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
-		echo "<h3>Add successfuly posted!</h3>";
-		echo "<a href='ads.index.php'><button type='button' name='seeAd' autofocus>View your ad</button></a>";
 	}
 
 ?>	
@@ -137,32 +135,42 @@
     <title>Adlister | Create Ad</title>
 
 <?php require_once '../views/partials/header.php'; ?>
+
 </head>
 <body>
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
 
-<!----------------------- Form Field to Create a New Ad ---------------------->
+<!----------------------- Start Form Field to Create a New Ad ---------------------->
 
 <section class="form">
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Create New Ad</h2>
+				<?php if(!empty($errors)){
+							echo "<span class='error'>*See errors below:</span>";
+					} 
+				?>
 			<form id="createAd" method="POST">
-				<input type='hidden' name='date' value="<?= date('l\, F jS\, Y \a\t h:i:s A'); ?>">
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
 							<legend>Ad information</legend>
 							<label for="title">Title</label>
 							<input type='text' id='title' name='title' value="<?= $savedInput['title']; ?>" placeholder='Title' required />
-							<?= "<span>" . $errorMessages['title'] . "</span>" ?>
+								<?php if(!empty($errorMessages['title'])){
+									echo "<span class='error'>" . $errorMessages['title'] . "</span>";
+								 } 
+								?>
 							<label for="description">Description</label>
 							<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
 							<label for="price">Price</label>
 							$<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
-							<?= "<span>" . $errorMessages['price'] . "</span>" ?>
+								<?php if(!empty($errorMessages['price'])){
+									echo "<span class='error'>" . $errorMessages['price'] . "</span>";
+								 } 
+								?>
 						</fieldset>
 					</div>
 				</div>
@@ -172,13 +180,22 @@
 							<legend>Your contact information</legend>		
 							<label for="contactName">Name</label>
 							<input type='text' id='contactName' name='contactName' value="<?= $savedInput['contactName']; ?>" placeholder='Your name' required />
-							<?= "<span>" . $errorMessages['contactName'] . "</span>" ?>
+								<?php if(!empty($errorMessages['contactName'])){
+									echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
+								 } 
+								?>
 							<label for="contactEmail">Email</label>
 							<input type='text' id='contactEmail' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Your email address' required />
-							<?= "<span>" . $errorMessages['contactEmail'] . "</span>" ?>
+								<?php if(!empty($errorMessages['contactEmail'])){
+									echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
+								 } 
+								?>
 							<label for="contactPhone">Phone number</label>
 							<input type='text' id='contactPhone' name='contactPhone' value="<?= $savedInput['contactPhone']; ?>" placeholder='Your phone number' />
-							<?= "<span>" . $errorMessages['contactPhone'] . "</span>" ?>
+								<?php if(!empty($errorMessages['contactPhone'])){
+									echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
+								 } 
+								?>
 						</fieldset>
 					</div>
 				</div>

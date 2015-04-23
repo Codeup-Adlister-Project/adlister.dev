@@ -2,29 +2,20 @@
 
 class Input
 {
-    /**
-     * Check if a given value was passed in the request
-     *
-     * @param string $key index to look for in request
-     * @return boolean whether value exists in $_POST or $_GET
-     */
+    // Check if a given value was passed in the request
     public static function has($key)
     {
         return isset($_REQUEST[$key]) ? true : false;
     }
 
-    /**
-     * Get a requested value from either $_POST or $_GET
-     *
-     * @param string $key index to look for in index
-     * @param mixed $default default value to return if key not found
-     * @return mixed value passed in request
-     */
+/////////////////////////////////////////////////////////////////
+    // Get a requested value from either $_POST or $_GET
     public static function get($key, $default = NULL)
     {
         return self::has($key) ? $_REQUEST[$key] : $default; 
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getString($key, $min = NULL, $max = NULL)
     {
         $keyValue = self::get($key);
@@ -52,6 +43,7 @@ class Input
         return trim($keyValue);
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getNumber($key, $min = NULL, $max = NULL)
     {
         $keyValue = trim(self::get($key));
@@ -79,6 +71,7 @@ class Input
         return (float)$keyValue;
     }
 
+/////////////////////////////////////////////////////////////////
     public static function getDate($key)
     {
         // Re-format the user inputted date to the correct format, using PHP library functions, before passing to MySQL 
@@ -92,6 +85,53 @@ class Input
             }
         } else {
             return $newDate = date('Y-m-d');
+        }
+    }
+
+/////////////////////////////////////////////////////////////////
+    public static function validateEmail($key)    // Found on stackoverflow: 'Best email validation function'
+    {
+        $email = self::get($key);
+
+        // First, we check that there's one @ symbol, and that the lengths are right
+        if (!preg_match("/^[^@]{1,64}@[^@]{1,255}$/", $email)) {
+            // Email invalid because wrong number of characters in one section, or wrong number of @ symbols.
+            throw new Exception ('Invalid email format');
+        }
+        // Split it into sections to make life easier
+        $email_array = explode("@", $email);
+        $local_array = explode(".", $email_array[0]);
+        for ($i = 0; $i < sizeof($local_array); $i++) {
+            if (!preg_match("/^(([A-Za-z0-9!#$%&'*+\/=?^_`{|}~-][A-Za-z0-9!#$%&'*+\/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$/", $local_array[$i])) {
+                throw new Exception ('Invalid email format');
+            }
+        }
+        if (!preg_match("/^\[?[0-9\.]+\]?$/", $email_array[1])) { // Check if domain is IP. If not, it should be valid domain name
+            $domain_array = explode(".", $email_array[1]);
+            if (sizeof($domain_array) < 2) {
+                throw new Exception ('Invalid email domain'); // Not enough parts to domain
+            }
+            for ($i = 0; $i < sizeof($domain_array); $i++) {
+                if (!preg_match("/^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$/", $domain_array[$i])) {
+                    throw new Exception ('Invalid email format');
+                }
+            }
+        }
+
+        return $email;
+     
+    }
+
+/////////////////////////////////////////////////////////////////
+    public static function areIdentical($key1, $key2)
+    {
+        $value1 = self::get($key1);
+        $value2 = self::get($key2);
+
+        if ($value1 === $value2) {
+            return true;
+        } else {
+            throw new Exception("{$key1}: $value1 and {$key2}: $value2 are not identical.");
         }
     }
 

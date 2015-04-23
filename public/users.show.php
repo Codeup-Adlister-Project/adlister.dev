@@ -4,10 +4,11 @@
     // Require Classes and resume current session
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
+    // If user is logged in, get their username, otherwise redirect them to homepage
     if(Auth::check()){
         $user = Auth::user(); 
     } else {
-        header("Location: auth.login.php");
+        header("Location: index.php");
         exit();
     }
 ?>
@@ -33,9 +34,9 @@
 		<li>Email: <a href="users.edit.php">Change Email</a></li>
 	</ul>
 
-	<form action="users.edit.php">
-		<input type='submit' value="Edit Profile">
-	</form>
+		<a href="users.edit.php"><button>Edit Profile</button></a>
+        <a href="ads.create.php"><button>Create New Ad</button></a>
+	
     <br>
     <hr>
     <h3>Your Ads:</h3>
