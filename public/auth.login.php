@@ -18,7 +18,7 @@
 
 	// Once login form is submitted, check their credentials. If they pass, refresh the current page and exit out ofsubsequent php.
 	// If credentials fail, generate error message and footer.php re-reveals pop-up modal window. 
-	if($_POST) {
+	if(isset($_POST['login'])) {
 
 		Auth::attempt($username, $password);
 
@@ -42,5 +42,5 @@
 	<input type="text" name="username" id="name" />
 	<label for="pswd">Password</label>
 	<input type="password" name="password" id="pswd" />
-	<input type="submit" class="button small radius" value="Get posting!" />
+	<input type="submit" class="button small radius" name='login' value="Get posting!" />
 </form>
