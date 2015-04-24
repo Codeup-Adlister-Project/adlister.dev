@@ -1,5 +1,5 @@
 <?php
-	
+
 	require_once '../models/BaseModel.php';
 
 	$migration = new BaseModel;
@@ -9,7 +9,7 @@
 	$drop = 'DROP TABLE IF EXISTS ads';
 	$dbc->exec($drop);
 
-	$query = "CREATE TABLE ads (
+	$query = "CREATE TABLE IF NOT EXISTS ads (
 				id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 				user_id INT(10) UNSIGNED NOT NULL,
 				contact_name VARCHAR(255) NOT NULL,
@@ -33,11 +33,11 @@
 
 	$sql = "CREATE TABLE IF NOT EXISTS users (
 				user_id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-				username VARCHAR(25) NOT NULL,
-				password VARCHAR(25) NOT NULL,
+				username VARCHAR(255) NOT NULL,
+				password VARCHAR(255) NOT NULL,
 				contact_email VARCHAR(255) NOT NULL,
 				date_created VARCHAR(255) NOT NULL,
-				PRIMARY KEY (user_id)		
+				PRIMARY KEY (user_id)
 			)";						// Note: date_created as VARCHAR datatype is intentional;
 									// it will be auto-entered by forms as a string
 

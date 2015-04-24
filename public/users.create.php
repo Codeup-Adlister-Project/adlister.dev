@@ -3,7 +3,7 @@
 <?php
 	// Require Classes and start a session for the page
 	require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
-	
+
 	// If user is already logged in, redirect to profile page and don't run rest of PHP
 	if(Auth::check()){
 		header("Location: users.show.php");
@@ -16,7 +16,7 @@
     // Array to hold user input in case of errors
     $savedInput = ['username'=>'', 'password'=>'', 'checkPswd'=>'', 'contactEmail'=>''];
     // if there is data submited from form, save it to the array above
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['create'])) {
         $savedInput = array_replace($savedInput, $_POST);   // replace initial values of user input array with $_POST data
     }
 
@@ -30,9 +30,9 @@
     if (!empty($_POST)) {
 
         try {
-            
+
             $newUsername = Input::getString('username', 2, 25);
-        
+
         } catch (DomainException $e) {
             $errors[] = $e->getMessage();
             $errorMessages['username'] = "The username must be an alphanumeric string of characters.";
@@ -45,9 +45,9 @@
         }
 
         try {
-            
+
             $newPassword = Input::getString('password', 8, 75);
-        
+
         } catch (DomainException $e) {
             $errors[] = $e->getMessage();
             $errorMessages['password'] = "The password must be an alphanumeric string of characters.";
@@ -60,8 +60,8 @@
         }
 
         try {
-        
-            $checkPswd = Input::areIdentical('password', 'checkPswd');
+            // Make sure both passwords entered are identical
+            Input::areIdentical('password', 'checkPswd');
 
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
@@ -69,28 +69,32 @@
         }
 
         try {
-            
+
             $newEmail = Input::validateEmail('contactEmail');
-        
+
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             $errorMessages['contactEmail'] = "Invalid email format";
-        } 
-    
-        
+        }
+
+
 
         // If no errors occur, go ahead and insert the form into the database
         if (empty($errors)) {
+
             $user = new User;
-            $user->username = $newUsername; 
-            $user->password = $newPassword;
+            $user->username = $newUsername;
+            $user->password = password_hash($newPassword, PASSWORD_DEFAULT);
             $user->contact_email = $newEmail;   // add a try/catch and a method in BaseModel that checks to see if email already exists
-            $user->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission 
+            $user->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
             $user->save();
 
             // Reset the $savedInput array back to its original content so the form appears blank.
             $savedInput = ['username'=>'', 'password'=>'', 'contactEmail'=>''];
-            
+
+            // Log them in automatically, and take them to their profile page.
+            Auth::attempt($newUsername, $newPassword);
+            header("Location: users.show.php");
         }
     }
 ?>
@@ -117,35 +121,35 @@
             <h2>Create an Account</h2>
                 <?php if(!empty($errors)){
                             echo "<span class='error'>*See errors below:</span>";
-                    } 
+                    }
                 ?>
             <form method="POST" action=''>
         		<input type='text' name='username' value='' placeholder='Username' required />
         	       <?php if(!empty($errorMessages['username'])){
                                 echo "<span class='error'>" . $errorMessages['username'] . "</span>";
-                         } 
+                         }
                     ?>
         		<input type='password' name='password' value='' placeholder='Password' required />
         	       <?php if(!empty($errorMessages['password'])){
                                 echo "<span class='error'>" . $errorMessages['password'] . "</span>";
-                         } 
+                         }
                     ?>
         		<input type='password' name='checkPswd' value='' placeholder='Confirm Password' required />
         	       <?php if(!empty($errorMessages['checkPswd'])){
                                 echo "<span class='error'>" . $errorMessages['checkPswd'] . "</span>";
-                         } 
+                         }
                     ?>
         		<input type='text' name='contactEmail' value='' placeholder='Email' required />
         	       <?php if(!empty($errorMessages['contactEmail'])){
                                 echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
-                         } 
+                         }
                     ?>
 
         <!-- Need to add an image-upload feature for profile photo here -->
 
                 <div class="row">
                     <div class="large-8 columns">
-                        <input type='submit' name='submit' value='Do it!' class="button small radius">
+                        <input type='submit' name='create' value='Do it!' class="button small radius">
                     </div>
                 </div>
             </form>
@@ -157,4 +161,4 @@
 
 </body>
 </html>
-	
+

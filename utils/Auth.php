@@ -1,15 +1,22 @@
 <?php
 
 	require_once 'Log.php';
+	require_once '../models/User.php';
+
 
 	class Auth
 	{
-		public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 
-		// verifies if the user provided the correct username and password
+		// create a logged-in session if user provides the correct username and password
 		public static function attempt($username, $password)
 		{
-			if($username == 'guest' && password_verify($password, self::$password)){
+			$correctCredentials = User::verifyLogin($username, $password);
+
+			if(!$correctCredentials){
+				// log result to a log tracking file
+				$logInFailure = new Log;
+				$logInFailure->logError("User $username failed to log in!");
+			} else {
 				// clear session array of any data from previous sessions
 				$_SESSION = array();
 				// store user's username to pass to next page
@@ -17,10 +24,8 @@
 				// log result to a log tracking file
 				$loggedIn = new Log;
 				$loggedIn->logInfo("User $username logged in successfully.");
-			} else {
-				// log result to a log tracking file
-				$logInFailure = new Log;
-				$logInFailure->logError("User $username failed to log in!");
+
+				return true;
 			}
 		}
 
