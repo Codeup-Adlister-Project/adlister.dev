@@ -124,22 +124,22 @@
                     }
                 ?>
             <form method="POST" action=''>
-        		<input type='text' name='username' value='' placeholder='Username' required />
+        		<input type='text' name='username' value="<?= $savedInput['username']; ?>" placeholder='Username' required />
         	       <?php if(!empty($errorMessages['username'])){
                                 echo "<span class='error'>" . $errorMessages['username'] . "</span>";
                          }
                     ?>
-        		<input type='password' name='password' value='' placeholder='Password' required />
+        		<input type='password' name='password' value="<?= $savedInput['password']; ?>" placeholder='Password' required />
         	       <?php if(!empty($errorMessages['password'])){
                                 echo "<span class='error'>" . $errorMessages['password'] . "</span>";
                          }
                     ?>
-        		<input type='password' name='checkPswd' value='' placeholder='Confirm Password' required />
+        		<input type='password' name='checkPswd' value="<?= $savedInput['checkPswd']; ?>" placeholder='Confirm Password' required />
         	       <?php if(!empty($errorMessages['checkPswd'])){
                                 echo "<span class='error'>" . $errorMessages['checkPswd'] . "</span>";
                          }
                     ?>
-        		<input type='text' name='contactEmail' value='' placeholder='Email' required />
+        		<input type='text' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Email' required />
         	       <?php if(!empty($errorMessages['contactEmail'])){
                                 echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
                          }

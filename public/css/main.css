@@ -409,9 +409,8 @@ span.prefix {
     color: #7FDBFF;
     background: #1A3552; }
   .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
-    color: #7FDBFF;
-    background-color: #1A3552;
-    background: #1A3552; }
+    color: #82BAED;
+    background: #001f3f; }
   .top-bar-section .dropdown li label {
     background: #1A3552; }
 
