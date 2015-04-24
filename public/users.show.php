@@ -4,15 +4,15 @@
     // Require Classes and resume current session
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-    // If user is logged in, get their username, otherwise redirect them to homepage
+    // If user is logged in, get their username, email, and user_id, otherwise redirect them to homepage
     if(Auth::check()){
-        $user = Auth::user(); 
+        $userArray = Auth::user();  //contains keys 'username', 'user_id', 'contact_email', and 'date_created'
     } else {
         header("Location: index.php");
         exit();
     }
 
-    // Get the user's ads
+        $user
 ?>
 
 <!doctype html>
@@ -36,11 +36,11 @@
     </div> 
     <div class="row">
         <div class="small-12 columns">
-        	<h2>Hello, <?= $user; ?>!</h2>
+        	<h2>Hello, <?= $userArray['username']; ?>!</h2>
         	<ul>
-        		<li><span class="pre">Username</span><?= $user; ?></li>
-        		<li><span class="pre">Email</span></li>
-                <li><span class="pre">Member since</span></li>
+        		<li><span class="pre">Username: </span><?= $userArray['username']; ?></li>
+        		<li><span class="pre">Email: </span><?= $userArray['contact_email']; ?></li>
+                <li><span class="pre">Member since: </span><?= $userArray['date_created']; ?></li>
         	</ul>
 
     		<a href="users.edit.php" class="button small radius">Edit Profile</a>
