@@ -70,7 +70,7 @@
 <!-- User's Created Ads Start -->
     <div class="row">
         <div class="small-12 columns">
-            <h3 class="featured">My Ads</h3>
+            <h3 id="myads" class="featured">My Ads</h3>
         </div>
     </div>
     <div class="row">

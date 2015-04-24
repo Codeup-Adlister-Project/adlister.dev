@@ -108,39 +108,52 @@
 			return $this->id = self::$dbc->lastInsertId();
 		}
 
-		public function update($columns, $columnsPlaceholders)
+		public function update($columns = NULL, $columnsPlaceholders = NULL)
 		{
-			// Go through the placeholders array and put a comma at the back of each value for use in the query,
-			array_walk($columnsPlaceholders, function(&$value, $key) {$value = $value . ',';});
-			// But remove the comma from the last value
-			$lastElement = array_pop($columnsPlaceholders);
-			$lastElement = str_split($lastElement);
-			array_pop($lastElement);
-			$lastElement = implode($lastElement);
-			array_push($columnsPlaceholders, $lastElement);
+			// Ensure there are attributes before attempting to save
+	        if (!empty($this->attributes)) {
+
+	        	// Get column names as an array, create a duplicate for prepared statement placeholders
+				$columns = array_keys($this->attributes);
+				$columnsPlaceholders = $columns;
+
+				// Put a colon on the front of each of the placeholders for use in the query
+				array_walk($columnsPlaceholders, function(&$value, $key) {$value = ':' . $value;});
+
+				// Go through the placeholders array and put a comma at the back of each value for use in the query,
+				array_walk($columnsPlaceholders, function(&$value, $key) {$value = $value . ',';});
+				// But remove the comma from the last value
+				$lastElement = array_pop($columnsPlaceholders);
+				$lastElement = str_split($lastElement);
+				array_pop($lastElement);
+				$lastElement = implode($lastElement);
+				array_push($columnsPlaceholders, $lastElement);
 
 
-			// Combine the columns and placeholders array into a single array where the columns are the keys and the placeholders are the values
-			$combinedArray = array_combine($columns, $columnsPlaceholders);
-			$set = '';	// an empty variable to concatinate onto in the foreach loop
-			
-			foreach ($combinedArray as $key => $value) {
-				$set .= "$key = $value "; 
+				// Combine the columns and placeholders array into a single array where the columns are the keys and the placeholders are the values
+				$combinedArray = array_combine($columns, $columnsPlaceholders);
+				$set = '';	// an empty variable to concatinate onto in the foreach loop
+
+				// Create the SET syntax for update query
+				foreach ($combinedArray as $key => $value) {
+					$set .= "$key = $value ";
+				}
+
+
+				// Dynamically build the update statement
+				$updateQuery = "UPDATE " . static::$table .
+									" SET " . $set .
+									"WHERE id= :id";
+
+				$update = self::$dbc->prepare($updateQuery);
+
+	        	// You will need to iterate through all the attributes to bind the placeholder variables in the prepared query to their values
+		        foreach ($this->attributes as $key => $attribute) {
+		    		$update->bindValue(":" . $key, $attribute, PDO::PARAM_STR);
+				}
+				
+				$update->execute();
 			}
-
-			// Dynamically build the update statement
-			$updateQuery = "UPDATE " . static::$table . 
-								" SET " . $set .
-								"WHERE id= :id";			
-			$update = self::$dbc->prepare($updateQuery);
-
-        	// You will need to iterate through all the attributes to bind the placeholder variables in the prepared query to their values
-	        foreach ($this->attributes as $key => $attribute) {
-	    		$update->bindValue(":" . $key, $attribute, PDO::PARAM_STR);
-			}
-
-			$update->execute();
-	        	
 		}
 
 		// Get an array of all the field names in the table, but remove the id field
@@ -193,6 +206,14 @@
 	    }
 
 	}
+
+// $update = new BaseModel;
+// $update->id = 7;
+// $update->title = 'Test5';
+
+// $update->update();
+
+
 
 ?>
 
