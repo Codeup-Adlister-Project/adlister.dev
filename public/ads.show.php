@@ -4,14 +4,6 @@
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
 
-    function pageController()
-    {
-        $data =['allAds' => Ad::all()];
-        return $data;
-    }
-
-    extract(pageController());  // $allAds will now represent all the records from the database
-
     // Retrieve record with id matching the $_GET request in url
     $ad = Ad::find($_GET['id']);
 
