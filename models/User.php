@@ -10,7 +10,7 @@
 
 
 		// Does a passed username exist in the table?
-		public static function findUser($username)
+		public static function checkUser($username)
 		{
 			$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
     		$dbc = $bm->getDbConnect();
@@ -28,7 +28,7 @@
     		$dbc = $bm->getDbConnect();
 
 			// See if username exists in the database
-			$userExists = self::findUser($username);
+			$userExists = self::checkUser($username);
 
 			if(!$userExists){
 				throw new Exception ("Username does not exist.");
