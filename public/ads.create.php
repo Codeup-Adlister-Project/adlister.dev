@@ -25,7 +25,7 @@
 
 
 	// Retrieve and sanitize user input into 'Create an Ad' form, retrieve and display any errors that occur
-	if (!empty($_POST)) {
+	if (!empty($_POST['create'])) {
 
 		$newDescription = Input::get('description');
 
@@ -109,18 +109,6 @@
 			$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
 			echo "<h3>Add successfuly posted!</h3>";
 			echo "<a href='ads.index.php'><button type='button' name='seeAd'>View your ad</button></a>";
-
-			// $userInput = "INSERT INTO ads (contact_name, contact_email, contact_phone, title, description, price)
-			// 				VALUES (:contactName, :contactEmail, :contactPhone, :title, :description, :price)";
-			// $insert = $dbc->prepare($userInput);
-
-			// $insert->bindValue(':contactName', $newName, PDO::PARAM_STR);
-			// $insert->bindValue(':contactEmail', $newEmail, PDO::PARAM_STR);
-			// $insert->bindValue(':contactPhone', $newPhone, PDO::PARAM_STR);
-			// $insert->bindValue(':title', $newTitle, PDO::PARAM_STR);
-			// $insert->bindValue(':description', $newDescription, PDO::PARAM_STR);
-			// $insert->bindValue(':price', $newPrice, PDO::PARAM_STR);
-			// $insert->execute();
 		}
 
 	}
