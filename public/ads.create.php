@@ -14,7 +14,7 @@
     // Array to hold user input in case of errors
 	$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>$userArray['contact_email'], 'contactPhone'=>''];
 	// if there is data submited from form, save it to the array above
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['create'])) {
   		$savedInput = array_replace($savedInput, $_POST);	// replace initial values of user input array with $_POST data
 	}
 
