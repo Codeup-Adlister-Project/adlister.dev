@@ -6,14 +6,17 @@
 
 	class Auth
 	{
-		public static $password;
 
-		// verifies if the user provided the correct username and password
+		// create a logged-in session if user provides the correct username and password
 		public static function attempt($username, $password)
 		{
 			$correctCredentials = User::verifyLogin($username, $password);
 
-			if($correctCredentials){
+			if(!$correctCredentials){
+				// log result to a log tracking file
+				$logInFailure = new Log;
+				$logInFailure->logError("User $username failed to log in!");
+			} else {
 				// clear session array of any data from previous sessions
 				$_SESSION = array();
 				// store user's username to pass to next page
@@ -21,10 +24,8 @@
 				// log result to a log tracking file
 				$loggedIn = new Log;
 				$loggedIn->logInfo("User $username logged in successfully.");
-			} else {
-				// log result to a log tracking file
-				$logInFailure = new Log;
-				$logInFailure->logError("User $username failed to log in!");
+
+				return true;
 			}
 		}
 
