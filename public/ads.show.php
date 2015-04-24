@@ -4,14 +4,6 @@
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
 
-    function pageController()
-    {
-        $data =['allAds' => Ad::all()];
-        return $data;
-    }
-
-    extract(pageController());  // $allAds will now represent all the records from the database
-
     // Retrieve record with id matching the $_GET request in url
     $ad = Ad::find($_GET['id']);
 
@@ -35,7 +27,7 @@
         <div class="medium-8 columns">
             <div class="post">
                 <div class="panel view">
-                    <h3><?= $ad['title']; ?></h3>
+                    <h3 id="date_created"><?= $ad['title']; ?></h3>
                     <a href="#"><img src="<?= $ad['image_url']; ?>"></a>
                     <p><span class="pre">Description</span><span class="description"><?= $ad['description']; ?></span></p>
                     <p><span class="pre">Price</span><span class="price">$<?= $ad['price']; ?></span></p>
@@ -52,6 +44,9 @@
                        <?php } ?>
                 </div>
             </div>
+        </div>
+        <div class="medium-4 columns">
+            <h3 class="pre">Posted on: <?= $ad['date_created']; ?></h3>
         </div>
     </div>
 </section>

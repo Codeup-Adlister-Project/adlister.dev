@@ -30,16 +30,21 @@
 		}
 
 		// returns a boolean whether or not the user is logged in
-		public static function check()
+		public static function check()	
 		{
 			return isset($_SESSION['LOGGED_IN_USER']);
 
 		}
 
 		// returns the username of the logged in user
-		public static function user()
+		public static function user()	// always call check() before this method
 		{
-			return $_SESSION['LOGGED_IN_USER'];
+			$username = $_SESSION['LOGGED_IN_USER'];
+
+			// Use the logged-in username to the retrieve their user_id and email from the database.
+			$userArray = User::getUserInfo($username);	//contains keys 'user_id', 'contact_email', and 'date_created'
+
+			return $userArray;
 		}
 
 		public static function logout()
