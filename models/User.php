@@ -51,6 +51,28 @@
     		}
 	    }
 
+	    // If a username exists in the table, retrieve its email and user_id
+		public static function getUserInfo($username)
+		{
+			$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
+    		$dbc = $bm->getDbConnect();
+
+			// See if username exists in the database
+			$userExists = self::checkUser($username);
+
+			if(!$userExists){
+				throw new Exception ("Username does not exist.");
+			}
+
+			$stmt = $dbc->prepare("SELECT user_id, contact_email, date_created FROM " . static::$table . " WHERE username = :username");
+			$stmt->bindValue(':username', $username, PDO::PARAM_STR);
+			$stmt->execute();
+			$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+			$userInfo['username'] = $username;
+
+			return $userInfo;	//is an array that contains user_id, contact_email, date_created and username.
+	    }
+
 	}
 
 ?>

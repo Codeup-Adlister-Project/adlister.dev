@@ -1,6 +1,118 @@
-<?php require_once '../bootstrap.php'; ?>
+<?php
+    // Require Classes and resume current session
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-<!-- A form that populates the selected ad's content for editting, and then updates the ad in the database 
+    // If user is not logged in, and gets to this page manually, redirect them to homepage
+    if(!Auth::check()){
+        header("Location: index.php");
+        exit();
+    }
+
+	// Get the selected ads id from url and then return all its content from database.
+    $ad = Ad::find($_GET['id']);
+
+
+    // Array to hold user input in case of errors
+	$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
+	// if there is data submited from form, save it to the array above
+	if(isset($_POST['edit'])) {
+  		$savedInput = array_replace($savedInput, $_POST);	// replace initial values of user input array with $_POST data
+	}
+
+
+	// initialize an array to catch all the generic errors, and another to hold any custom messages for display
+	$errors = [];
+	$errorMessages = ['title'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
+
+
+	// Retrieve and sanitize user input into 'Create an Ad' form, retrieve and display any errors that occur
+	if (!empty($_POST['edit'])) {
+
+		$newDescription = Input::get('description');
+
+		try {
+
+			$newTitle = Input::getString('title', 2, 75);
+
+		} catch (DomainException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['title'] = "The title must be an alphanumeric string of characters.";
+		} catch (LengthException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['title'] = "The title must be between 2 and 75 characters long.";
+		} catch (Exception $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['title'] = "Woops, an error occured, please try entering a different title.";
+		}
+
+		try {
+
+			$newPrice = Input::getNumber('price');
+
+		} catch (Exception $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['price'] = "Woops, an error occured, please try entering a valid monetary amount.";
+		}
+
+		try {
+
+			$newName = Input::getString('contactName', 2, 75);
+
+		} catch (DomainException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactName'] = "Your name must be an alphanumeric string of characters.";
+		} catch (LengthException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactName'] = "Your name must be between 2 and 75 characters long.";
+		} catch (Exception $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactName'] = "Woops, an error occured, please try again.";
+		}
+
+		try {
+
+            $newEmail = Input::validateEmail('contactEmail');
+
+        } catch (Exception $e) {
+            $errors[] = $e->getMessage();
+            $errorMessages['contactEmail'] = "Invalid email format";
+        }
+
+		try {
+
+			$newPhone = Input::getString('contactPhone', 0, 16);
+
+		} catch (DomainException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactPhone'] = "Please enter a valid phone number: ###-###-####.";
+		} catch (LengthException $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactPhone'] = "The phone number you entered is too long.";
+		} catch (Exception $e) {
+			$errors[] = $e->getMessage();
+			$errorMessages['contactPhone'] = "Woops, please try entering a valid phone number: ###-###-####.";
+		}
+
+		// If no errors occur, go ahead and insert the form into the database
+		if (empty($errors)) {
+
+			$update = new Ad;
+			$update->id = $_GET['id'];
+			$update->contact_name = $newName;
+			$update->contact_email = $newEmail;
+			$update->contact_phone = $newPhone;
+			$update->title = $newTitle;
+			$update->description = $newDescription;
+			$update->price = $newPrice;
+			$update->update();
+
+			header("Location: users.show.php#myads");
+		}
+
+	}
+?>
+
+<!-- A form that populates the selected ad's content for editting, and then updates the ad in the database
 with the new input-->
 <!doctype html>
 <html lang="en-US" class="no-js">
@@ -19,23 +131,35 @@ with the new input-->
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Edit Ad</h2>
+			<?php if(!empty($errors)){
+						echo "<span class='error'>*See errors below:</span>";
+					}
+			?>
 			<form method="POST" action=''>
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
 							<legend>Ad information</legend>
 							<label for="title">Title</label>
-							<input id="title" type="text" name="title" placeholder="User title here..." value="" />
+							<input id="title" type="text" name="title" placeholder="User title here..." value="<?= $ad['title']; ?>" />
+							<?php if(!empty($errorMessages['title'])){
+									echo "<span class='error'>" . $errorMessages['title'] . "</span>";
+								 }
+							?>
 							<label for="description">Description</label>
-							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"></textarea>
+							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"><?= $ad['description']; ?></textarea>
 							<label for="price">Price</label>
 							<div class="row collapse">
 								<div class="small-2 medium-1 columns">
 									<span class="prefix">$</span>
 								</div>
 								<div class="small-10 medium-11 columns">
-									<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+									<input id="price" type="text" name="price" placeholder="User price here..." value="<?= $ad['price']; ?>" />
 								</div>
+								<?php if(!empty($errorMessages['price'])){
+										echo "<span class='error'>" . $errorMessages['price'] . "</span>";
+									 }
+								?>
 							</div>
 						</fieldset>
 					</div>
@@ -43,13 +167,25 @@ with the new input-->
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
-							<legend>Your contact information</legend>		
+							<legend>Your contact information</legend>
 							<label for="contactName">Name</label>
-							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="" />
+							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="<?= $ad['contact_name']; ?>" />
+							<?php if(!empty($errorMessages['contactName'])){
+									echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
+								 }
+							?>
 							<label for="contactEmail">Email</label>
-							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="" />
+							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="<?= $ad['contact_email']; ?>" />
+							<?php if(!empty($errorMessages['contactEmail'])){
+									echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
+								 }
+							?>
 							<label for="contactPhone">Phone number</label>
-							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="" />
+							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="<?= $ad['contact_phone']; ?>" />
+							<?php if(!empty($errorMessages['contactPhone'])){
+									echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
+								 }
+							?>
 						</fieldset>
 					</div>
 				</div>
@@ -64,10 +200,10 @@ with the new input-->
 				</div>
 
 			<!-- Need to add an image-upload/delete feature here -->
-				
+
 				<div class="row">
 					<div class="large-8 columns">
-						<input type='submit' name='submit' value='Submit edits' class="button small radius">
+						<input type='submit' name='edit' value='Submit edits' class="button small radius">
 					</div>
 				</div>
 			</form>

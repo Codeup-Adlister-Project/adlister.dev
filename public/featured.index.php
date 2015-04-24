@@ -30,10 +30,11 @@
                             <img src="<?= $ad['image_url']; ?>" alt="No image provided.">
                             <p><span class="pre">Description</span><span class="description"><?= $ad['description']; ?></span></p>
                             <p><span class="pre">Price</span><span class="price">$<?= $ad['price']; ?></p>
-                            <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']; ?>">View Entire Ad<i class="fa fa-chevron-circle-right"></i></a></span></p>
+                            <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']; ?>">View Ad<i class="fa fa-chevron-circle-right"></i></a></span></p>
                             <p class="view-post"><a data-dropdown="<?= 'drop' . $ad['id']; ?>" aria-controls="drop2" aria-expanded="false">Quick View<i class="fa fa-chevron-circle-right"></i></a></span></p>
                         </div>
                         <div id="<?= 'drop' . $ad['id']; ?>" data-dropdown-content class="f-dropdown content panel view" aria-hidden="true" tabindex="-1">
+                            <p><span class="pre">Posted on</span><span class="date"><?= $ad['date_created']; ?></p>
                             <p>Contact <span class="contact"><?= $ad['contact_name']; ?></span> if interested: </p>
                             <ul>
                                 <li><span class="pre">Email</span><?= $ad['contact_email']; ?></li>

@@ -20,4 +20,9 @@
     if (!isset($_SESSION)) { 
         session_start(); 
     }
+
+    // If user is logged in, get their username, email, and user_id
+    if(Auth::check()){
+        $userArray = Auth::user();  //contains keys 'username', 'user_id', 'contact_email', and 'date_created'
+    }
 ?>

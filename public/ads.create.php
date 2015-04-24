@@ -1,20 +1,20 @@
 <!-- Displays a form for creating a new add in the database -->
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
-	
+
 	// If user is not logged in and gets to ads.create.php manually, redirect to home page and don't run rest of PHP
 	if(!Auth::check()){
 		header("Location: index.php");
 		exit();
 	}
-   	
+
    	// set default timezone
    	date_default_timezone_set('America/Chicago');
 
     // Array to hold user input in case of errors
-	$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
+	$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>$userArray['contact_email'], 'contactPhone'=>''];
 	// if there is data submited from form, save it to the array above
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['create'])) {
   		$savedInput = array_replace($savedInput, $_POST);	// replace initial values of user input array with $_POST data
 	}
 
@@ -25,14 +25,14 @@
 
 
 	// Retrieve and sanitize user input into 'Create an Ad' form, retrieve and display any errors that occur
-	if (!empty($_POST)) {
-		
+	if (!empty($_POST['create'])) {
+
 		$newDescription = Input::get('description');
 
 		try {
-			
+
 			$newTitle = Input::getString('title', 2, 75);
-		
+
 		} catch (DomainException $e) {
 			$errors[] = $e->getMessage();
 			$errorMessages['title'] = "The title must be an alphanumeric string of characters.";
@@ -45,7 +45,7 @@
 		}
 
 		try {
-		
+
 			$newPrice = Input::getNumber('price');
 
 		} catch (Exception $e) {
@@ -54,9 +54,9 @@
 		}
 
 		try {
-			
+
 			$newName = Input::getString('contactName', 2, 75);
-		
+
 		} catch (DomainException $e) {
 			$errors[] = $e->getMessage();
 			$errorMessages['contactName'] = "Your name must be an alphanumeric string of characters.";
@@ -69,18 +69,18 @@
 		}
 
 		try {
-            
+
             $newEmail = Input::validateEmail('contactEmail');
-        
+
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             $errorMessages['contactEmail'] = "Invalid email format";
-        } 
-	
+        }
+
 		try {
-			
+
 			$newPhone = Input::getString('contactPhone', 0, 16);
-		
+
 		} catch (DomainException $e) {
 			$errors[] = $e->getMessage();
 			$errorMessages['contactPhone'] = "Please enter a valid phone number: ###-###-####.";
@@ -95,7 +95,7 @@
 		// If no errors occur, go ahead and insert the form into the database
 		if (empty($errors)) {
 			$ad = new Ad;
-			$ad->user_id = 500;		// make this = $ad->getUserID() where it returns: SELECT user_id WHERE username = Auth::user()
+			$ad->user_id = $userArray['user_id'];
 			$ad->contact_name = $newName;
 			$ad->contact_email = $newEmail;
 			$ad->contact_phone = $newPhone;
@@ -109,23 +109,11 @@
 			$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
 			echo "<h3>Add successfuly posted!</h3>";
 			echo "<a href='ads.index.php'><button type='button' name='seeAd'>View your ad</button></a>";
-
-			// $userInput = "INSERT INTO ads (contact_name, contact_email, contact_phone, title, description, price)
-			// 				VALUES (:contactName, :contactEmail, :contactPhone, :title, :description, :price)";
-			// $insert = $dbc->prepare($userInput);
-
-			// $insert->bindValue(':contactName', $newName, PDO::PARAM_STR);
-			// $insert->bindValue(':contactEmail', $newEmail, PDO::PARAM_STR);
-			// $insert->bindValue(':contactPhone', $newPhone, PDO::PARAM_STR);
-			// $insert->bindValue(':title', $newTitle, PDO::PARAM_STR);
-			// $insert->bindValue(':description', $newDescription, PDO::PARAM_STR);
-			// $insert->bindValue(':price', $newPrice, PDO::PARAM_STR);
-			// $insert->execute();
 		}
 
 	}
 
-?>	
+?>
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -150,7 +138,7 @@
 			<h2>Create New Ad</h2>
 				<?php if(!empty($errors)){
 							echo "<span class='error'>*See errors below:</span>";
-					} 
+					}
 				?>
 			<form id="createAd" method="POST">
 				<div class="row">
@@ -161,7 +149,7 @@
 							<input type='text' id='title' name='title' value="<?= $savedInput['title']; ?>" placeholder='Title' required />
 								<?php if(!empty($errorMessages['title'])){
 									echo "<span class='error'>" . $errorMessages['title'] . "</span>";
-								 } 
+								 }
 								?>
 							<label for="description">Description</label>
 							<textarea type='text' id='description' name='description' placeholder='Description' rows='10' cols='75' maxlength="4000"><?= $savedInput['description']; ?></textarea>
@@ -175,7 +163,7 @@
 								</div>
 									<?php if(!empty($errorMessages['price'])){
 										echo "<span class='error'>" . $errorMessages['price'] . "</span>";
-									 } 
+									 }
 									?>
 							</div>
 						</fieldset>
@@ -184,24 +172,24 @@
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
-							<legend>Your contact information</legend>		
+							<legend>Your contact information</legend>
 							<label for="contactName">Name</label>
 							<input type='text' id='contactName' name='contactName' value="<?= $savedInput['contactName']; ?>" placeholder='Your name' required />
 								<?php if(!empty($errorMessages['contactName'])){
 									echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
-								 } 
+								 }
 								?>
 							<label for="contactEmail">Email</label>
 							<input type='text' id='contactEmail' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Your email address' required />
 								<?php if(!empty($errorMessages['contactEmail'])){
 									echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
-								 } 
+								 }
 								?>
 							<label for="contactPhone">Phone number</label>
 							<input type='text' id='contactPhone' name='contactPhone' value="<?= $savedInput['contactPhone']; ?>" placeholder='Your phone number' />
 								<?php if(!empty($errorMessages['contactPhone'])){
 									echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
-								 } 
+								 }
 								?>
 						</fieldset>
 					</div>
@@ -217,7 +205,7 @@
 				</div>
 
 			<!-- Need to add an image-upload/delete feature here -->
-				
+
 				<div class="row">
 					<div class="large-8 columns">
 						<input type='submit' name='create' value='Post' class="button small radius">
