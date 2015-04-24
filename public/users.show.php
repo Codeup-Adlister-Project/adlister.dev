@@ -4,8 +4,8 @@
     // Require Classes and resume current session
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-    // If user is not logged in, redirect them to homepage
-    if(!(Auth::check())){
+    // If user is not logged in, and gets to this page manually, redirect them to homepage
+    if(!Auth::check()){
         header("Location: index.php");
         exit();
     }
