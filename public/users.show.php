@@ -4,15 +4,12 @@
     // Require Classes and resume current session
     require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-    // If user is logged in, get their username, email, and user_id, otherwise redirect them to homepage
-    if(Auth::check()){
-        $userArray = Auth::user();  //contains keys 'username', 'user_id', 'contact_email', and 'date_created'
-    } else {
+    // If user is not logged in, redirect them to homepage
+    if(!(Auth::check())){
         header("Location: index.php");
         exit();
     }
 
-        $user
 ?>
 
 <!doctype html>
