@@ -220,7 +220,7 @@
 				
 				<div class="row">
 					<div class="large-8 columns">
-						<input type='submit' name='submit' value='Post' class="button small radius">
+						<input type='submit' name='create' value='Post' class="button small radius">
 					</div>
 				</div>
 			</form>
