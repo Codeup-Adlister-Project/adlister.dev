@@ -92,6 +92,52 @@
 			$errorMessages['contactPhone'] = "Woops, please try entering a valid phone number: ###-###-####.";
 		}
 
+///////////////////////////////////// Image Upload
+		$image_url = null;
+
+        //if they DID upload a file...
+        if($_FILES['image']['name'])
+        {
+            //if no errors...
+            if(!$_FILES['image']['error'])
+            {
+                //now is the time to modify the future file name and validate the file
+                $new_file_name = strtolower($_FILES['image']['tmp_name']); //rename file
+
+                if($_FILES['image']['size'] > (1024000)) //can't be larger than 1 MB
+                {
+                    $valid_file = false;
+                    $errorMessages['image'] = 'Oops!  Your file\'s size is to large.';
+                } else {
+                    $valid_file = true;
+                }
+                
+                //if the file has passed the test
+                if($valid_file)
+                {
+                    //move it to where we want it to be
+                    $currentdir = getcwd();
+					$target = $currentdir .'/uploads/' . basename($_FILES['image']['name']);
+					move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                }
+            }
+            //if there is an error...
+            else
+            {
+                //set that to be the returned message
+                $errorMessages['image'] = 'Ooops!  Your upload triggered the following error:  '.$_FILES['image']['error'];
+            }
+
+            $image_url = '/uploads/' . basename($_FILES['image']['name']);  
+        } 
+
+        //you get the following information for each file:
+        // $_FILES['field_name']['name']
+        // $_FILES['field_name']['size']
+        // $_FILES['field_name']['type']
+        // $_FILES['field_name']['tmp_name']
+		
+
 		// If no errors occur, go ahead and insert the form into the database
 		if (empty($errors)) {
 			$ad = new Ad;
@@ -103,6 +149,7 @@
 			$ad->description = $newDescription;
 			$ad->price = $newPrice;
 			$ad->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
+			$ad->image_url = $image_url;
 			$ad->save();
 
 			// Reset the $savedInput array back to its original content so the form appears blank.
@@ -110,17 +157,6 @@
 			echo "<h3>Add successfuly posted!</h3>";
 			echo "<a href='ads.index.php'><button type='button' name='seeAd'>View your ad</button></a>";
 
-			// $userInput = "INSERT INTO ads (contact_name, contact_email, contact_phone, title, description, price)
-			// 				VALUES (:contactName, :contactEmail, :contactPhone, :title, :description, :price)";
-			// $insert = $dbc->prepare($userInput);
-
-			// $insert->bindValue(':contactName', $newName, PDO::PARAM_STR);
-			// $insert->bindValue(':contactEmail', $newEmail, PDO::PARAM_STR);
-			// $insert->bindValue(':contactPhone', $newPhone, PDO::PARAM_STR);
-			// $insert->bindValue(':title', $newTitle, PDO::PARAM_STR);
-			// $insert->bindValue(':description', $newDescription, PDO::PARAM_STR);
-			// $insert->bindValue(':price', $newPrice, PDO::PARAM_STR);
-			// $insert->execute();
 		}
 
 	}
@@ -142,7 +178,7 @@
 <?php require_once '../views/partials/navbar.php'; ?>
 
 
-<!----------------------- Start Form Field to Create a New Ad ---------------------->
+<!-- Start Form Field to Create a New Ad -->
 
 <section class="form">
 	<div class="row">
@@ -152,7 +188,7 @@
 							echo "<span class='error'>*See errors below:</span>";
 					} 
 				?>
-			<form id="createAd" method="POST">
+			<form id="createAd" name="createAd" method="POST" enctype="multipart/form-data">
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
@@ -178,6 +214,22 @@
 									 } 
 									?>
 							</div>
+							<label for="image">Image</label>
+							<input type="file" id="image" name="image" accept="image/*" required />
+								<?php if(!empty($errorMessages['image'])){
+									echo "<span class='error'>" . $errorMessages['image'] . "</span>";
+								 } 
+								?>
+
+							<!-- Commented code below is a work in progress for making the file uploader prettier -->
+							<!-- <div class="row collapse">
+								<div class="small-10 columns">
+									<input type="text" name="txtFakeText" readonly="true" value="Upload an image...">
+								</div>
+								<div class="small-2 columns">
+								    <input type="button" onclick="handleFileButtonClick();" value="Browse" class="button tiny info postfix">
+							    </div>
+						    </div> -->
 						</fieldset>
 					</div>
 				</div>
@@ -214,10 +266,7 @@
 							<input type="radio" name="contactMethod" value="text-preferred" id="textPreferred" /><label for="textPreferred">Text</label>
 						</fieldset>
 					</div>
-				</div>
-
-			<!-- Need to add an image-upload/delete feature here -->
-				
+				</div>	
 				<div class="row">
 					<div class="large-8 columns">
 						<input type='submit' name='create' value='Post' class="button small radius">
