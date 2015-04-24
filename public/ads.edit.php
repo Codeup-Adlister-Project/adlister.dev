@@ -1,6 +1,19 @@
-<?php require_once '../bootstrap.php'; ?>
+<?php
+    // Require Classes and resume current session
+    require_once($_SERVER['DOCUMENT_ROOT'].'../../bootstrap.php');
 
-<!-- A form that populates the selected ad's content for editting, and then updates the ad in the database 
+    // If user is not logged in, and gets to this page manually, redirect them to homepage
+    if(!Auth::check()){
+        header("Location: index.php");
+        exit();
+    }
+
+	// Get the selected ads id from url and then return all its content from database.
+    $ad = Ad::find($_GET['id']);
+
+?>
+
+<!-- A form that populates the selected ad's content for editting, and then updates the ad in the database
 with the new input-->
 <!doctype html>
 <html lang="en-US" class="no-js">
@@ -25,16 +38,16 @@ with the new input-->
 						<fieldset>
 							<legend>Ad information</legend>
 							<label for="title">Title</label>
-							<input id="title" type="text" name="title" placeholder="User title here..." value="" />
+							<input id="title" type="text" name="title" placeholder="User title here..." value="<?= $ad['title']; ?>" />
 							<label for="description">Description</label>
-							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"></textarea>
+							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"><?= $ad['description']; ?></textarea>
 							<label for="price">Price</label>
 							<div class="row collapse">
 								<div class="small-2 medium-1 columns">
 									<span class="prefix">$</span>
 								</div>
 								<div class="small-10 medium-11 columns">
-									<input id="price" type="text" name="price" placeholder="User price here..." value="" />
+									<input id="price" type="text" name="price" placeholder="User price here..." value="<?= $ad['price']; ?>" />
 								</div>
 							</div>
 						</fieldset>
@@ -43,13 +56,13 @@ with the new input-->
 				<div class="row">
 					<div class="large-8 columns">
 						<fieldset>
-							<legend>Your contact information</legend>		
+							<legend>Your contact information</legend>
 							<label for="contactName">Name</label>
-							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="" />
+							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="<?= $ad['contact_name']; ?>" />
 							<label for="contactEmail">Email</label>
-							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="" />
+							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="<?= $ad['contact_email']; ?>" />
 							<label for="contactPhone">Phone number</label>
-							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="" />
+							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="<?= $ad['contact_phone']; ?>" />
 						</fieldset>
 					</div>
 				</div>
