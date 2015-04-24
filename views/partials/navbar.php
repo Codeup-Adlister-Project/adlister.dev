@@ -29,23 +29,34 @@
                     <li class="divider show-for-small-only"></li>
                     <li class=""><a href="ads.index.php">All ads</a></li>
                     <li class="divider show-for-small-only"></li>
-                    <li class=""><a href="#" data-dropdown="navdrop2" aria-controls="navdrop2" aria-expanded="false" data-options="is_hover:true">Categories</a></li>
-                        <ul id="navdrop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-                          <li><a href="#">Free</a></li>
-                          <li><a href="#">Automotive</a></li>
-                          <li><a href="#">Pets</a></li>
-                          <li><a href="#">Tech</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Categories</a>
+                        <ul class="dropdown">
+                            <li class="divider"></li>
+                            <li><a href="#">Free</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Automotive</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Pets</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Tech</a></li>
                         </ul>
+                    </li>
                     <li class="divider show-for-small-only"></li>
                     
                     <!-- If user is already logged in, show 'logout' button -->
                     <?php if(Auth::check()) { ?>
-                        <li class=""><a href="users.show.php" data-dropdown="navdrop1" aria-controls="navdrop1" aria-expanded="false" data-options="is_hover:true">My Account</a><li>
-                            <ul id="navdrop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-                              <li><a href="users.show.php">View Profile</a></li>
-                              <li><a href="users.edit.php">Edit Profile</a></li>
-                              <li><a href="ads.create.php">Create a New Ad</a></li>
+                        <li class="has-dropdown">
+                            <a href="users.show.php">My Account</a>
+                            <ul class="dropdown">
+                                <li class="divider"></li>
+                                <li><a href="users.show.php">View Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="users.edit.php">Edit Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="ads.create.php">Create a New Ad</a></li>
                             </ul>
+                        <li>
                         <li class="divider"></li>
                         <li class=""><a href="auth.logout.php">Log out</a></li>
                     <?php } else { ?>
