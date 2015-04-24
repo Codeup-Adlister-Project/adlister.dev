@@ -16,7 +16,7 @@
     // Array to hold user input in case of errors
     $savedInput = ['username'=>'', 'password'=>'', 'checkPswd'=>'', 'contactEmail'=>''];
     // if there is data submited from form, save it to the array above
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['create'])) {
         $savedInput = array_replace($savedInput, $_POST);   // replace initial values of user input array with $_POST data
     }
 
@@ -92,6 +92,9 @@
             // Reset the $savedInput array back to its original content so the form appears blank.
             $savedInput = ['username'=>'', 'password'=>'', 'contactEmail'=>''];
 
+            // Log them in automatically, and take them to their profile page.
+            Auth::attempt($newUsername, $newPassword);
+            header("Location: users.show.php");
         }
     }
 ?>
@@ -146,7 +149,7 @@
 
                 <div class="row">
                     <div class="large-8 columns">
-                        <input type='submit' name='submit' value='Do it!' class="button small radius">
+                        <input type='submit' name='create' value='Do it!' class="button small radius">
                     </div>
                 </div>
             </form>
