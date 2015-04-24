@@ -41,9 +41,6 @@
 	    // Check if passed password matches password stored in table
 	    public static function verifyLogin($username, $inputPassword)
 	    {
-	    	$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
-    		$dbc = $bm->getDbConnect();
-
     		// If username exists, get their hashed password from table
     		$realPassword = self::getPassword($username);
 
