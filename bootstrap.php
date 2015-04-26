@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once 'utils/Auth.php';
 	require_once 'utils/Input.php';
 	require_once 'utils/Log.php';
@@ -12,13 +12,16 @@
 	    if (file_exists(__DIR__.'/utils/'.$className . '.php')) {
 	        require_once '/utils/'.$className . '.php';
 	        return true;
+	    } else if (file_exists(__DIR__.'/models/'.$className . '.php')) {
+	        require_once '/models/'.$className . '.php';
+	        return true;
 	    }
 	    return false;
 	}
 
 	 // Start/resume current session
-    if (!isset($_SESSION)) { 
-        session_start(); 
+    if (!isset($_SESSION)) {
+        session_start();
     }
 
     // If user is logged in, get their username, email, and user_id

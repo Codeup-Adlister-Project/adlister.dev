@@ -2,8 +2,8 @@
 
 	require_once '../models/BaseModel.php';
 
-	$migration = new BaseModel;
-	$dbc = $migration->getDbConnect();
+	// Get PDO connection
+	$dbc = BaseModel::getDbConnect();
 
 	// Ads table
 	$drop = 'DROP TABLE IF EXISTS ads';

@@ -16,6 +16,9 @@
 				// log result to a log tracking file
 				$logInFailure = new Log;
 				$logInFailure->logError("User $username failed to log in!");
+
+				return false;
+
 			} else {
 				// clear session array of any data from previous sessions
 				$_SESSION = array();
@@ -30,7 +33,7 @@
 		}
 
 		// returns a boolean whether or not the user is logged in
-		public static function check()	
+		public static function check()
 		{
 			return isset($_SESSION['LOGGED_IN_USER']);
 

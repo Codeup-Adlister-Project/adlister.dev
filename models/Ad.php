@@ -10,8 +10,7 @@
 		// Find all records based on a user's id
 	    public static function findAds($user_id)
 	    {
-	        $bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
-    		$dbc = $bm->getDbConnect();
+	        $dbc = self::getDbConnect();
 
 	        // @TODO: Create select statement using prepared statements
 	        $stmt = $dbc->prepare("SELECT * FROM " . static::$table . " WHERE user_id = :user_id");
