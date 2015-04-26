@@ -109,7 +109,7 @@
 			return $this->id = self::$dbc->lastInsertId();
 		}
 
-		public function update($columns = NULL, $columnsPlaceholders = NULL)
+		public function update($columns = NULL, $columnsPlaceholders = NULL, $wherePARAM = 'id')
 		{
 			// Ensure there are attributes before attempting to save
 	        if (!empty($this->attributes)) {
@@ -144,7 +144,7 @@
 				// Dynamically build the update statement
 				$updateQuery = "UPDATE " . static::$table .
 									" SET " . $set .
-									"WHERE id= :id";
+									"WHERE " . $wherePARAM . " = :" . $wherePARAM;
 
 				$update = self::$dbc->prepare($updateQuery);
 
