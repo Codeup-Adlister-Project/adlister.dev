@@ -154,8 +154,14 @@
 
 			// Reset the $savedInput array back to its original content so the form appears blank.
 			$savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
-			echo "<h3>Add successfuly posted!</h3>";
-			echo "<a href='ads.index.php'><button type='button' name='seeAd'>View your ad</button></a>";
+			echo "<div class='row'>
+					<div class='large-12 columns'>
+						<h3>Add successfuly posted!</h3>
+						<a href='ads.index.php'>
+							<button type='button' name='seeAd'>View your ad</button>
+						</a>
+					</div>
+				</div>";
 
 		}
 
