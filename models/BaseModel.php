@@ -6,14 +6,14 @@
 	define ('DB_USER', 'adlister_user');
 	define ('DB_PASS', 'password');
 
-	class BaseModel 
+	class BaseModel
 	{
 
 		protected static $dbc;
 	    protected static $table;
 	    public $attributes = array();
 
-	   
+
 	    public function __construct()
 	    {
 	        self::dbConnect();
@@ -33,11 +33,12 @@
 				// // Display the PDO connection status
 				self::$dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
-	        } 
+	        }
 	    }
 
-	    public function getDbConnect()
+	    public static function getDbConnect()
 	    {
+	    	self::dbConnect();
 	    	return self::$dbc;
 	    }
 
@@ -108,7 +109,7 @@
 			return $this->id = self::$dbc->lastInsertId();
 		}
 
-		public function update($columns = NULL, $columnsPlaceholders = NULL)
+		public function update($columns = NULL, $columnsPlaceholders = NULL, $wherePARAM = 'id')
 		{
 			// Ensure there are attributes before attempting to save
 	        if (!empty($this->attributes)) {
@@ -143,7 +144,7 @@
 				// Dynamically build the update statement
 				$updateQuery = "UPDATE " . static::$table .
 									" SET " . $set .
-									"WHERE id= :id";
+									"WHERE " . $wherePARAM . " = :" . $wherePARAM;
 
 				$update = self::$dbc->prepare($updateQuery);
 
@@ -151,7 +152,7 @@
 		        foreach ($this->attributes as $key => $attribute) {
 		    		$update->bindValue(":" . $key, $attribute, PDO::PARAM_STR);
 				}
-				
+
 				$update->execute();
 			}
 		}

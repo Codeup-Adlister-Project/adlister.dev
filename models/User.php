@@ -12,8 +12,7 @@
 		// Does a passed username exist in the table?
 		public static function checkUser($username)
 		{
-			$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
-    		$dbc = $bm->getDbConnect();
+			$dbc = self::getDbConnect();
 
 			// See if username exists in the database
 			$userFound = $dbc->query("SELECT username FROM " . static::$table . " WHERE username = '" . $username . "'")->fetchColumn();
@@ -24,8 +23,7 @@
 		// If a username exists in the table, retrieve its password
 		public static function getPassword($username)
 		{
-			$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
-    		$dbc = $bm->getDbConnect();
+			$dbc = self::getDbConnect();
 
 			// See if username exists in the database
 			$userExists = self::checkUser($username);
@@ -54,8 +52,7 @@
 	    // If a username exists in the table, retrieve its email and user_id
 		public static function getUserInfo($username)
 		{
-			$bm = new BaseModel;		// Not the best way to do, but getDbConnect() is public
-    		$dbc = $bm->getDbConnect();
+			$dbc = self::getDbConnect();
 
 			// See if username exists in the database
 			$userExists = self::checkUser($username);

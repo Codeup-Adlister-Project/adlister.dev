@@ -2,8 +2,8 @@
 
 	require_once '../models/BaseModel.php';
 
-	$seeder = new BaseModel;
-	$dbc = $seeder->getDbConnect();
+	// Get PDO connection
+	$dbc = BaseModel::getDbConnect();
 
 
 	// Seed ads table

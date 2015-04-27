@@ -2,8 +2,8 @@
 
 	require_once '../models/BaseModel.php';
 
-	$migration = new BaseModel;
-	$dbc = $migration->getDbConnect();
+	// Get PDO connection
+	$dbc = BaseModel::getDbConnect();
 
 	// Ads table
 	$drop = 'DROP TABLE IF EXISTS ads';
@@ -17,7 +17,7 @@
 				contact_phone VARCHAR(16) DEFAULT NULL,
 				title VARCHAR(255) NOT NULL,
 				description TEXT,
-				price FLOAT NOT NULL,
+				price DECIMAL(10,2) NOT NULL,
 				image_url BLOB,
 				date_created VARCHAR(255) NOT NULL,
 				PRIMARY KEY (id)

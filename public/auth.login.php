@@ -33,9 +33,12 @@
 
 ?>
 
+<!----- Form within Modal Start ------>
+
 <?php if(!empty($errorMessage)): ?>
 	<h1><?= $errorMessage; ?></h1>
 <?php endif; ?>
+
 <h2 id="login">Log in</h2>
 <form method="POST" action="">
 	<label for="name">Username</label>
@@ -44,3 +47,5 @@
 	<input type="password" name="password" id="pswd" />
 	<input type="submit" class="button small radius" name='login' value="Get posting!" />
 </form>
+
+<!----- Form within Modal End ------>
