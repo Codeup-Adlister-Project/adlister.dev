@@ -121,39 +121,39 @@
         <div class="small-12 columns">
             <h2>Edit Profile</h2>
             <form method="POST" action=''>
-                    <label for="Username">Username</label>
-            		<input type='text' name='username' value="<?= $userArray['username']; ?>" placeholder='Username' required />
+                <label for="Username">Username</label>
+        		<input type='text' name='username' value="<?= $userArray['username']; ?>" placeholder='Username' required />
                     <?php if(!empty($errorMessages['username'])){
                             echo "<span class='error'>" . $errorMessages['username'] . "</span>";
                          }
                     ?>
-                    <label for="password">Current Password</label>
-            		<input type='password' name='password' placeholder='Current Password' required />
+                <label for="password">Current Password</label>
+        		<input type='password' name='password' placeholder='Current Password' required />
                     <?php if(!empty($errorMessages['password'])){
                             echo "<span class='error'>" . $errorMessages['password'] . "</span>";
                          }
                     ?>
-                    <label for="newPassword">New Password  (optional)</label>
-            		<input type='password' name='newPassword' value="<?= $savedInput['newPassword']; ?>" placeholder='New Password (optional)' />
+                <label for="newPassword">New Password  (optional)</label>
+        		<input type='password' name='newPassword' value="<?= $savedInput['newPassword']; ?>" placeholder='New Password (optional)' />
                     <?php if(!empty($errorMessages['newPassword'])){
                             echo "<span class='error'>" . $errorMessages['newPassword'] . "</span>";
                          }
                     ?>
-                    <label for="confirmPass">Confirm New Password</label>
-            		<input type='password' name='confirmPass' value="<?= $savedInput['confirmPass']; ?>" placeholder='Confirm New Password' />
+                <label for="confirmPass">Confirm New Password</label>
+        		<input type='password' name='confirmPass' value="<?= $savedInput['confirmPass']; ?>" placeholder='Confirm New Password' />
                     <?php if(!empty($errorMessages['confirmPass'])){
                             echo "<span class='error'>" . $errorMessages['confirmPass'] . "</span>";
                          }
                     ?>
-                    <label for="contactEmail">Email</label>
-            		<input type='text' name='contactEmail' value="<?= $userArray['contact_email']; ?>" placeholder='Email' required />
+                <label for="contactEmail">Email</label>
+        		<input type='text' name='contactEmail' value="<?= $userArray['contact_email']; ?>" placeholder='Email' required />
                     <?php if(!empty($errorMessages['contactEmail'])){
                             echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
                          }
                     ?>
-            		<input type='submit' class='button' name='edit' value='Submit Changes' />
+        		<input type='submit' class='button' name='edit' value='Submit Changes' />
 
-            <!-- Need to add an image-upload feature that alters profile photo here -->
+        <!-- Maybe add an image-upload feature that alters profile photo here -->
 
             </form>
         </div>

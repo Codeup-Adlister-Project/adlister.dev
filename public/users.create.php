@@ -145,7 +145,7 @@
                          }
                     ?>
 
-        <!-- Need to add an image-upload feature for profile photo here -->
+        <!-- Maybe add an image-upload feature for profile photo here -->
 
                 <div class="row">
                     <div class="large-8 columns">

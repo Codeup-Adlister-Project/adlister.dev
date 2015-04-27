@@ -111,7 +111,7 @@
                 } else {
                     $valid_file = true;
                 }
-                
+
                 //if the file has passed the test
                 if($valid_file)
                 {
@@ -128,15 +128,15 @@
                 $errorMessages['image'] = 'Ooops!  Your upload triggered the following error:  '.$_FILES['image']['error'];
             }
 
-            $image_url = '/uploads/' . basename($_FILES['image']['name']);  
-        } 
+            $image_url = '/uploads/' . basename($_FILES['image']['name']);
+        }
 
         //you get the following information for each file:
         // $_FILES['field_name']['name']
         // $_FILES['field_name']['size']
         // $_FILES['field_name']['type']
         // $_FILES['field_name']['tmp_name']
-		
+
 
 		// If no errors occur, go ahead and insert the form into the database
 		if (empty($errors)) {
@@ -209,16 +209,16 @@
 								<div class="small-10 medium-11 columns">
 									<input type='text' id='price' name='price' value="<?= $savedInput['price']; ?>" placeholder='Price' required />
 								</div>
-									<?php if(!empty($errorMessages['price'])){
-										echo "<span class='error'>" . $errorMessages['price'] . "</span>";
-									 }
-									?>
+								<?php if(!empty($errorMessages['price'])){
+									echo "<span class='error'>" . $errorMessages['price'] . "</span>";
+								 }
+								?>
 							</div>
 							<label for="image">Image</label>
 							<input type="file" id="image" name="image" accept="image/*" required />
 								<?php if(!empty($errorMessages['image'])){
 									echo "<span class='error'>" . $errorMessages['image'] . "</span>";
-								 } 
+								 }
 								?>
 
 							<!-- Commented code below is a work in progress for making the file uploader prettier -->
@@ -266,8 +266,7 @@
 							<input type="radio" name="contactMethod" value="text-preferred" id="textPreferred" /><label for="textPreferred">Text</label>
 						</fieldset>
 					</div>
-				</div>	
-
+				</div>
 				<div class="row">
 					<div class="large-8 columns">
 						<input type='submit' name='create' value='Post' class="button small radius">

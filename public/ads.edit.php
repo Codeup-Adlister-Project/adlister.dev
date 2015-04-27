@@ -97,10 +97,10 @@
 		$image_url = $ad['image_url'];
 
         //if they DID upload a file...
-        if($_FILES['image']['name'])
+        if(!empty($_FILES['image']['name']))
         {
             //if no errors...
-            if(!$_FILES['image']['error'])
+            if(empty($_FILES['image']['error']))
             {
                 //now is the time to modify the future file name and validate the file
                 $new_file_name = strtolower($_FILES['image']['tmp_name']); //rename file
@@ -181,10 +181,10 @@ with the new input-->
 	<div class="row">
 		<div class="small-12 columns">
 			<h2>Edit Ad</h2>
-			<?php if(!empty($errors)){
-						echo "<span class='error'>*See errors below:</span>";
-					}
-			?>
+				<?php if(!empty($errors)){
+							echo "<span class='error'>*See errors below:</span>";
+						}
+				?>
 			<form method="POST" action=''>
 				<div class="row">
 					<div class="large-8 columns">
@@ -192,10 +192,10 @@ with the new input-->
 							<legend>Ad information</legend>
 							<label for="title">Title</label>
 							<input id="title" type="text" name="title" placeholder="User title here..." value="<?= $ad['title']; ?>" />
-							<?php if(!empty($errorMessages['title'])){
-									echo "<span class='error'>" . $errorMessages['title'] . "</span>";
-								 }
-							?>
+								<?php if(!empty($errorMessages['title'])){
+										echo "<span class='error'>" . $errorMessages['title'] . "</span>";
+									 }
+								?>
 							<label for="description">Description</label>
 							<textarea id="description" name="description" rows="10" maxlength="4000" placeholder="500 words or less"><?= $ad['description']; ?></textarea>
 							<label for="price">Price</label>
@@ -206,10 +206,10 @@ with the new input-->
 								<div class="small-10 medium-11 columns">
 									<input id="price" type="text" name="price" placeholder="User price here..." value="<?= $ad['price']; ?>" />
 								</div>
-								<?php if(!empty($errorMessages['price'])){
-										echo "<span class='error'>" . $errorMessages['price'] . "</span>";
-									 }
-								?>
+									<?php if(!empty($errorMessages['price'])){
+											echo "<span class='error'>" . $errorMessages['price'] . "</span>";
+										 }
+									?>
 							</div>
 							<label for="image">Change Image?</label>
 							<input type="file" id="image" name="image" accept="image/*" required />
@@ -236,22 +236,22 @@ with the new input-->
 							<legend>Your contact information</legend>
 							<label for="contactName">Name</label>
 							<input id="contactName" type="text" name="contactName" placeholder="User name here..." value="<?= $ad['contact_name']; ?>" />
-							<?php if(!empty($errorMessages['contactName'])){
-									echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
-								 }
-							?>
+								<?php if(!empty($errorMessages['contactName'])){
+										echo "<span class='error'>" . $errorMessages['contactName'] . "</span>";
+									 }
+								?>
 							<label for="contactEmail">Email</label>
 							<input id="contactEmail" type="text" name="contactEmail" placeholder="User email here..." value="<?= $ad['contact_email']; ?>" />
-							<?php if(!empty($errorMessages['contactEmail'])){
-									echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
-								 }
-							?>
+								<?php if(!empty($errorMessages['contactEmail'])){
+										echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
+									 }
+								?>
 							<label for="contactPhone">Phone number</label>
 							<input id="contactPhone" type="text" name="contactPhone" placeholder="User phone number here..." value="<?= $ad['contact_phone']; ?>" />
-							<?php if(!empty($errorMessages['contactPhone'])){
-									echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
-								 }
-							?>
+								<?php if(!empty($errorMessages['contactPhone'])){
+										echo "<span class='error'>" . $errorMessages['contactPhone'] . "</span>";
+									 }
+								?>
 						</fieldset>
 					</div>
 				</div>
