@@ -83,7 +83,7 @@
                         <p><span class="pre">Description</span><span class="description"><?= $ad['description']; ?></span></p>
                         <p><span class="pre">Price</span><span class="price">$<?= $ad['price']; ?></p>
                         <p class="view-post"><a href="ads.show.php?id=<?= $ad['id']; ?>">View <i class="fa fa-chevron-circle-right"></i></a></span></p>
-                        <p class="view-post"><a href="ads.edit.php?id=<?= $ad['id']; ?>">Edit <i class="fa fa-chevron-circle-right"></i></a></span></p>
+                        <p class="view-post"><a href="ads.edit.php?id=<?= $ad['id']; ?>">Edit <i class="fa fa-pencil-square-o"></i></a></span></p>
                     </div>
                 </div>
             </div>

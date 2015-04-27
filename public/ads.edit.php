@@ -107,6 +107,7 @@
 			$update->update();
 
 			header("Location: users.show.php#myads");
+			exit();
 		}
 
 	}

@@ -96,6 +96,7 @@
             $update->update(NULL, NULL, 'user_id');
 
             header("Location: users.show.php");
+            exit();
         }
     }
 
