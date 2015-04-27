@@ -17,7 +17,7 @@
 				contact_phone VARCHAR(16) DEFAULT NULL,
 				title VARCHAR(255) NOT NULL,
 				description TEXT,
-				price FLOAT NOT NULL,
+				price DECIMAL(10,2) NOT NULL,
 				image_url BLOB,
 				date_created VARCHAR(255) NOT NULL,
 				PRIMARY KEY (id)
