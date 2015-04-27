@@ -8,7 +8,7 @@
         exit();
     }
 
-	// Get the selected ads id from url and then return all its content from database.
+	// Get the selected ad and return an array of all its content from database.
     $ad = Ad::find($_GET['id']);
 
 
@@ -93,6 +93,54 @@
 			$errorMessages['contactPhone'] = "Woops, please try entering a valid phone number: ###-###-####.";
 		}
 
+///////////////////////////////////// Image Uploader
+		$image_url = $ad['image_url'];
+
+        //if they DID upload a file...
+        if($_FILES['image']['name'])
+        {
+            //if no errors...
+            if(!$_FILES['image']['error'])
+            {
+                //now is the time to modify the future file name and validate the file
+                $new_file_name = strtolower($_FILES['image']['tmp_name']); //rename file
+
+                if($_FILES['image']['size'] > (1024000)) //can't be larger than 1 MB
+                {
+                    $valid_file = false;
+                    $errors[] = 'img too large.';
+                    $errorMessages['image'] = 'Oops!  Your file\'s size is to large.';
+                } else {
+                    $valid_file = true;
+                }
+
+                //if the file has passed the test
+                if($valid_file)
+                {
+                    //move it to where we want it to be
+                    $currentdir = getcwd();
+					$target = $currentdir .'/uploads/' . basename($_FILES['image']['name']);
+					move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                }
+            }
+            //if there is an error...
+            else
+            {
+                //set that to be the returned message
+                $errors[] = $_FILES['image']['error'];
+                $errorMessages['image'] = 'Ooops!  Your upload triggered the following error:  '.$_FILES['image']['error'];
+            }
+
+            $image_url = '/uploads/' . basename($_FILES['image']['name']);
+        }
+
+        //you get the following information for each file:
+        // $_FILES['field_name']['name']
+        // $_FILES['field_name']['size']
+        // $_FILES['field_name']['type']
+        // $_FILES['field_name']['tmp_name']
+
+
 		// If no errors occur, go ahead and insert the form into the database
 		if (empty($errors)) {
 
@@ -104,6 +152,7 @@
 			$update->title = $newTitle;
 			$update->description = $newDescription;
 			$update->price = $newPrice;
+			$update->image_url = $image_url;
 			$update->update();
 
 			header("Location: users.show.php#myads");
@@ -162,6 +211,22 @@ with the new input-->
 									 }
 								?>
 							</div>
+							<label for="image">Change Image?</label>
+							<input type="file" id="image" name="image" accept="image/*" required />
+								<?php if(!empty($errorMessages['image'])){
+									echo "<span class='error'>" . $errorMessages['image'] . "</span>";
+								 }
+								?>
+
+							<!-- Commented code below is a work in progress for making the file uploader prettier -->
+							<!-- <div class="row collapse">
+								<div class="small-10 columns">
+									<input type="text" name="txtFakeText" readonly="true" value="Upload an image...">
+								</div>
+								<div class="small-2 columns">
+								    <input type="button" onclick="handleFileButtonClick();" value="Browse" class="button tiny info postfix">
+							    </div>
+						    </div> -->
 						</fieldset>
 					</div>
 				</div>
