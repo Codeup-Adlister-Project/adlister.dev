@@ -47,27 +47,32 @@
 
 <section id="account">
     <div class="row">
-        <div class="small-12 columns">
+        <div class="small-6 columns">
             <h5 class="featured">My Account</h5>
         </div>
     </div>
     <div class="row">
         <div class="small-12 columns">
         	<h2>Hello, <?= $userArray['username']; ?>!</h2>
-        	<ul>
-        		<li>
-                    <span class="pre">Username: </span><?= $userArray['username']; ?>
-                </li>
-        		<li>
-                    <span class="pre">Email: </span><?= $userArray['contact_email']; ?>
-                </li>
-                <li>
-                    <span class="pre">Member since: </span><?= $userArray['date_created']; ?>
-                </li>
-        	</ul>
-
-    		<a href="users.edit.php" class="button small radius">Edit Profile</a>
-            <a href="ads.create.php" class="button small radius">Create New Ad</a>
+                <div class='row'>
+                    <div class='panel large-6 columns'>	
+                        <ul>
+                    		<li>
+                                <span class="pre">Username</span><?= $userArray['username']; ?>
+                            </li>
+                    		<li>
+                                <span class="pre">Email</span><?= $userArray['contact_email']; ?>
+                            </li>
+                    	</ul>
+                    </div>
+                    <div class='large-6 columns'>
+                        <h5>Member since: <br>
+                            <p><?= $userArray['date_created']; ?></p>
+                        </h5>
+                        <a href="users.edit.php" class="button small radius">Edit Profile</a>
+                        <a href="ads.create.php" class="button small radius">Create New Ad</a>
+                    </div>
+                </div>
 
             <hr>
         </div>
